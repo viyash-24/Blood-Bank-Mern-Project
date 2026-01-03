@@ -7,6 +7,10 @@ const connectDB = require("./config/db");
 //dot config
 dotenv.config();
 
+//mongodb connection
+connectDB();
+
+
 
 //port
 const PORT = process.env.PORT || 8080;
