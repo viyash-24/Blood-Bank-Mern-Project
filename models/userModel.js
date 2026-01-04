@@ -43,6 +43,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "password is requied"],
     },
+    website: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
