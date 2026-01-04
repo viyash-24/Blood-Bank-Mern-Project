@@ -34,6 +34,11 @@ const userSchema = new mongoose.Schema(
         return false;
       },
     },
+    email: {
+      type: String,
+      required: [true, "email is required"],
+      unique: true,
+    },
   },
   { timestamps: true }
 );
