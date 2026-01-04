@@ -20,6 +20,18 @@ const inventorySchema = new mongoose.Schema(
       type: String,
       required: [true, "Donar Email is Required"],
     },
+    organisation: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+      required: [true, "organisation is require"],
+    },
+    hospital: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+      required: function () {
+        return this.inventoryType === "out";
+      },
+    },
   },
   { timestamps: true }
 );
