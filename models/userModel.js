@@ -16,6 +16,24 @@ const userSchema = new mongoose.Schema(
         return false;
       },
     },
+    organisationName: {
+      type: String,
+      required: function () {
+        if (this.role === "organisation") {
+          return true;
+        }
+        return false;
+      },
+    },
+    hospitalName: {
+      type: String,
+      required: function () {
+        if (this.role === "hospital") {
+          return true;
+        }
+        return false;
+      },
+    },
   },
   { timestamps: true }
 );
