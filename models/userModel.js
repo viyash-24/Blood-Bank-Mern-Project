@@ -46,6 +46,10 @@ const userSchema = new mongoose.Schema(
     website: {
       type: String,
     },
+    address: {
+      type: String,
+      required: [true, "address is required"],
+    },
   },
   { timestamps: true }
 );
