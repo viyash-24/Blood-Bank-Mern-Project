@@ -25,4 +25,22 @@ const bloodGroupDetailsContoller = async (req, res) => {
             },
           },
         ]);
+        //COunt TOTAL OUT
+        const totalOut = await inventoryModel.aggregate([
+          {
+            $match: {
+              bloodGroup: bloodGroup,
+              inventoryType: "out",
+              organisation,
+            },
+          },
+          {
+            $group: {
+              _id: null,
+              total: { $sum: "$quantity" },
+            },
+          },
+        ]);
         
+
+module.exports = { bloodGroupDetailsContoller };
