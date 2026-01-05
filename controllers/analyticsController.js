@@ -55,6 +55,19 @@ const bloodGroupDetailsContoller = async (req, res) => {
       })
     );
 
-    
+    return res.status(200).send({
+      success: true,
+      message: "Blood Group Data Fetch Successfully",
+      bloodGroupData,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error In Bloodgroup Data Analytics API",
+      error,
+    });
+  }
+};
 
 module.exports = { bloodGroupDetailsContoller };
