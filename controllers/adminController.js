@@ -85,3 +85,11 @@ const deleteDonarController = async (req, res) => {
     });
   }
 };
+
+//EXPORT
+module.exports = {
+  getDonarsListController,
+  getHospitalListController,
+  getOrgListController,
+  deleteDonarController,
+};
