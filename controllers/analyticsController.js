@@ -45,5 +45,16 @@ const bloodGroupDetailsContoller = async (req, res) => {
         const availabeBlood =
           (totalIn[0]?.total || 0) - (totalOut[0]?.total || 0);
 
-        
+        //PUSH DATA
+        bloodGroupData.push({
+          bloodGroup,
+          totalIn: totalIn[0]?.total || 0,
+          totalOut: totalOut[0]?.total || 0,
+          availabeBlood,
+        });
+      })
+    );
+
+    
+
 module.exports = { bloodGroupDetailsContoller };
