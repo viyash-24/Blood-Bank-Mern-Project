@@ -41,6 +41,9 @@ const bloodGroupDetailsContoller = async (req, res) => {
             },
           },
         ]);
-        
+        //CALCULATE TOTAL
+        const availabeBlood =
+          (totalIn[0]?.total || 0) - (totalOut[0]?.total || 0);
 
+        
 module.exports = { bloodGroupDetailsContoller };
