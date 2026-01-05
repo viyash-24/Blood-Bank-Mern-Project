@@ -22,4 +22,25 @@ const getDonarsListController = async (req, res) => {
     });
   }
 };
+//GET HOSPITAL LIST
+const getHospitalListController = async (req, res) => {
+  try {
+    const hospitalData = await userModel
+      .find({ role: "hospital" })
+      .sort({ createdAt: -1 });
 
+    return res.status(200).send({
+      success: true,
+      Toatlcount: hospitalData.length,
+      message: "HOSPITAL List Fetched Successfully",
+      hospitalData,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error In Hospital List API",
+      error,
+    });
+  }
+};
