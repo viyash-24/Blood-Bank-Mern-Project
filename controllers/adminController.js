@@ -44,3 +44,25 @@ const getHospitalListController = async (req, res) => {
     });
   }
 };
+//GET ORG LIST
+const getOrgListController = async (req, res) => {
+  try {
+    const orgData = await userModel
+      .find({ role: "organisation" })
+      .sort({ createdAt: -1 });
+
+    return res.status(200).send({
+      success: true,
+      Toatlcount: orgData.length,
+      message: "ORG List Fetched Successfully",
+      orgData,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error In ORG List API",
+      error,
+    });
+  }
+};
