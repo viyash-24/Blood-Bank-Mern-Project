@@ -166,4 +166,24 @@ const getRecentInventoryController = async (req, res) => {
 const getDonarsController = async (req, res) => {
   try {
     const organisation = req.body.userId;
-    
+    //find donars
+    const donorId = await inventoryModel.distinct("donar", {
+      organisation,
+    });
+    // console.log(donorId);
+    const donars = await userModel.find({ _id: { $in: donorId } });
+
+    return res.status(200).send({
+      success: true,
+      message: "Donar Record Fetched Successfully",
+      donars,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error in Donar records",
+      error,
+    });
+  }
+};
