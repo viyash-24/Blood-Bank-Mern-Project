@@ -138,3 +138,64 @@ const getInventoryHospitalController = async (req, res) => {
   }
 };
 
+// GET BLOOD RECORD OF 3
+const getRecentInventoryController = async (req, res) => {
+  try {
+    const inventory = await inventoryModel
+      .find({
+        organisation: req.body.userId,
+      })
+      .limit(3)
+      .sort({ createdAt: -1 });
+    return res.status(200).send({
+      success: true,
+      message: "recent Invenotry Data",
+      inventory,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error In Recent Inventory API",
+      error,
+    });
+  }
+};
+
+// GET DONAR REOCRDS
+const getDonarsController = async (req, res) => {
+  try {
+    const organisation = req.body.userId;
+    //find donars
+    const donorId = await inventoryModel.distinct("donar", {
+      organisation,
+    });
+    // console.log(donorId);
+    const donars = await userModel.find({ _id: { $in: donorId } });
+
+    return res.status(200).send({
+      success: true,
+      message: "Donar Record Fetched Successfully",
+      donars,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error in Donar records",
+      error,
+    });
+  }
+};
+
+const getHospitalController = async (req, res) => {
+  try {
+    const organisation = req.body.userId;
+    //GET HOSPITAL ID
+    const hospitalId = await inventoryModel.distinct("hospital", {
+      organisation,
+    });
+    //FIND HOSPITAL
+    const hospitals = await userModel.find({
+      _id: { $in: hospitalId },
+    });
