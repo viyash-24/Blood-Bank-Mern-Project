@@ -161,3 +161,9 @@ const getRecentInventoryController = async (req, res) => {
     });
   }
 };
+
+// GET DONAR REOCRDS
+const getDonarsController = async (req, res) => {
+  try {
+    const organisation = req.body.userId;
+    
