@@ -187,3 +187,11 @@ const getDonarsController = async (req, res) => {
     });
   }
 };
+
+const getHospitalController = async (req, res) => {
+  try {
+    const organisation = req.body.userId;
+    //GET HOSPITAL ID
+    const hospitalId = await inventoryModel.distinct("hospital", {
+      organisation,
+    });
