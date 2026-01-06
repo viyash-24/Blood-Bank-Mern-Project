@@ -22,4 +22,22 @@ const createInventoryController = async (req, res) => {
       const requestedBloodGroup = req.body.bloodGroup;
       const requestedQuantityOfBlood = req.body.quantity;
       const organisation = new mongoose.Types.ObjectId(req.body.userId);
-     
+      //calculate Blood Quanitity
+      const totalInOfRequestedBlood = await inventoryModel.aggregate([
+        {
+          $match: {
+            organisation,
+            inventoryType: "in",
+            bloodGroup: requestedBloodGroup,
+          },
+        },
+        {
+          $group: {
+            _id: "$bloodGroup",
+            total: { $sum: "$quantity" },
+          },
+        },
+      ]);
+      // console.log("Total In", totalInOfRequestedBlood);
+      const totalIn = totalInOfRequestedBlood[0]?.total || 0;
+      
