@@ -73,4 +73,20 @@ const createInventoryController = async (req, res) => {
       req.body.donar = user?._id;
     }
 
-  
+    //save record
+    const inventory = new inventoryModel(req.body);
+    await inventory.save();
+    return res.status(201).send({
+      success: true,
+      message: "New Blood Reocrd Added",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Errro In Create Inventory API",
+      error,
+    });
+  }
+};
+
