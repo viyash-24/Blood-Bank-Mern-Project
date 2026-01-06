@@ -83,7 +83,9 @@ const loginController = async (req, res) => {
 
 //GET CURRENT USER
 const currentUserController = async (req, res) => {
-  
+  try {
+    const user = await userModel.findOne({ _id: req.body.userId });
+    
 };
 
 module.exports = { registerController, loginController, currentUserController };
