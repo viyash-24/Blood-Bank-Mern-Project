@@ -40,4 +40,23 @@ const createInventoryController = async (req, res) => {
       ]);
       // console.log("Total In", totalInOfRequestedBlood);
       const totalIn = totalInOfRequestedBlood[0]?.total || 0;
-      
+      //calculate OUT Blood Quanitity
+
+      const totalOutOfRequestedBloodGroup = await inventoryModel.aggregate([
+        {
+          $match: {
+            organisation,
+            inventoryType: "out",
+            bloodGroup: requestedBloodGroup,
+          },
+        },
+        {
+          $group: {
+            _id: "$bloodGroup",
+            total: { $sum: "$quantity" },
+          },
+        },
+      ]);
+      const totalOut = totalOutOfRequestedBloodGroup[0]?.total || 0;
+
+     
