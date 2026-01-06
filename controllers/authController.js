@@ -51,6 +51,11 @@ const loginController = async (req, res) => {
         message: "role dosent match",
       });
     }
+    //compare password
+    const comparePassword = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
     
 
 module.exports = { registerController, loginController, currentUserController };
