@@ -81,6 +81,9 @@ const loginController = async (req, res) => {
   }
 };
 
-
+//GET CURRENT USER
+const currentUserController = async (req, res) => {
+  
+};
 
 module.exports = { registerController, loginController, currentUserController };
