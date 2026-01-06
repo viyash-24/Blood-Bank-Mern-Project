@@ -65,5 +65,22 @@ const loginController = async (req, res) => {
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
-   
+    return res.status(200).send({
+      success: true,
+      message: "Login Successfully",
+      token,
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error In Login API",
+      error,
+    });
+  }
+};
+
+
+
 module.exports = { registerController, loginController, currentUserController };
