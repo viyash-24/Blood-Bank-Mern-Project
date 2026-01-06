@@ -56,6 +56,11 @@ const loginController = async (req, res) => {
       req.body.password,
       user.password
     );
-    
-
+    if (!comparePassword) {
+      return res.status(500).send({
+        success: false,
+        message: "Invalid Credentials",
+      });
+    }
+   
 module.exports = { registerController, loginController, currentUserController };
