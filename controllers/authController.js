@@ -90,7 +90,14 @@ const currentUserController = async (req, res) => {
       message: "User Fetched Successfully",
       user,
     });
- 
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "unable to get current user",
+      error,
+    });
+  }
 };
 
 module.exports = { registerController, loginController, currentUserController };
