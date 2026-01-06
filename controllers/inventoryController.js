@@ -18,4 +18,8 @@ const createInventoryController = async (req, res) => {
     //   throw new Error("Not a hospital");
     // }
 
-  
+    if (req.body.inventoryType == "out") {
+      const requestedBloodGroup = req.body.bloodGroup;
+      const requestedQuantityOfBlood = req.body.quantity;
+      const organisation = new mongoose.Types.ObjectId(req.body.userId);
+     
