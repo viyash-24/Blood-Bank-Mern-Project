@@ -59,4 +59,18 @@ const createInventoryController = async (req, res) => {
       ]);
       const totalOut = totalOutOfRequestedBloodGroup[0]?.total || 0;
 
-     
+      //in & Out Calc
+      const availableQuanityOfBloodGroup = totalIn - totalOut;
+      //quantity validation
+      if (availableQuanityOfBloodGroup < requestedQuantityOfBlood) {
+        return res.status(500).send({
+          success: false,
+          message: `Only ${availableQuanityOfBloodGroup}ML of ${requestedBloodGroup.toUpperCase()} is available`,
+        });
+      }
+      req.body.hospital = user?._id;
+    } else {
+      req.body.donar = user?._id;
+    }
+
+  
