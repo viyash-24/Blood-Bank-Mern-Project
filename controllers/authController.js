@@ -62,5 +62,8 @@ const loginController = async (req, res) => {
         message: "Invalid Credentials",
       });
     }
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
    
 module.exports = { registerController, loginController, currentUserController };
