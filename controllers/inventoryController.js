@@ -246,4 +246,17 @@ const getOrgnaisationForHospitalController = async (req, res) => {
     const organisations = await userModel.find({
       _id: { $in: orgId },
     });
-    
+    return res.status(200).send({
+      success: true,
+      message: "Hospital Org Data Fetched Successfully",
+      organisations,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error In Hospital ORG API",
+      error,
+    });
+  }
+};
