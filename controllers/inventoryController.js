@@ -237,3 +237,9 @@ const getOrgnaisationController = async (req, res) => {
     });
   }
 };
+// GET ORG for Hospital
+const getOrgnaisationForHospitalController = async (req, res) => {
+  try {
+    const hospital = req.body.userId;
+    const orgId = await inventoryModel.distinct("organisation", { hospital });
+    
