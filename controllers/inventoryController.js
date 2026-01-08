@@ -213,3 +213,10 @@ const getHospitalController = async (req, res) => {
     });
   }
 };
+
+// GET ORG PROFILES
+const getOrgnaisationController = async (req, res) => {
+  try {
+    const donar = req.body.userId;
+    const orgId = await inventoryModel.distinct("organisation", { donar });
+    
