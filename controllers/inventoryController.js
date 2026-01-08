@@ -242,4 +242,8 @@ const getOrgnaisationForHospitalController = async (req, res) => {
   try {
     const hospital = req.body.userId;
     const orgId = await inventoryModel.distinct("organisation", { hospital });
+    //find org
+    const organisations = await userModel.find({
+      _id: { $in: orgId },
+    });
     
