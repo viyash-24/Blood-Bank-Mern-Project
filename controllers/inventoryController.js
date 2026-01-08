@@ -260,3 +260,14 @@ const getOrgnaisationForHospitalController = async (req, res) => {
     });
   }
 };
+
+module.exports = {
+  createInventoryController,
+  getInventoryController,
+  getDonarsController,
+  getHospitalController,
+  getOrgnaisationController,
+  getOrgnaisationForHospitalController,
+  getInventoryHospitalController,
+  getRecentInventoryController,
+};
