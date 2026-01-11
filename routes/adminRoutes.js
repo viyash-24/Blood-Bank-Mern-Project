@@ -27,3 +27,6 @@ router.get(
   adminMiddleware,
   getHospitalListController
 );
+//GET || ORG LIST
+router.get("/org-list", authMiddelware, adminMiddleware, getOrgListController);
+// ==========================
