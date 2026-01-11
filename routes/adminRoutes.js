@@ -8,3 +8,5 @@ const {
 } = require("../controllers/adminController");
 const adminMiddleware = require("../middlewares/adminMiddleware");
 
+//router object
+const router = express.Router();
