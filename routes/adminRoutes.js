@@ -10,3 +10,13 @@ const adminMiddleware = require("../middlewares/adminMiddleware");
 
 //router object
 const router = express.Router();
+
+//Routes
+
+//GET || DONAR LIST
+router.get(
+  "/donar-list",
+  authMiddelware,
+  adminMiddleware,
+  getDonarsListController
+);
