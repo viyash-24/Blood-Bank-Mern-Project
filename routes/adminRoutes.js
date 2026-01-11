@@ -20,3 +20,10 @@ router.get(
   adminMiddleware,
   getDonarsListController
 );
+//GET || HOSPITAL LIST
+router.get(
+  "/hospital-list",
+  authMiddelware,
+  adminMiddleware,
+  getHospitalListController
+);
