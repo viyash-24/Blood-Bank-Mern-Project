@@ -30,3 +30,11 @@ router.get(
 //GET || ORG LIST
 router.get("/org-list", authMiddelware, adminMiddleware, getOrgListController);
 // ==========================
+
+// DELETE DONAR || GET
+router.delete(
+  "/delete-donar/:id",
+  authMiddelware,
+  adminMiddleware,
+  deleteDonarController
+);
