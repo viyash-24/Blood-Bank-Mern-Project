@@ -38,3 +38,6 @@ router.delete(
   adminMiddleware,
   deleteDonarController
 );
+
+//EXPORT
+module.exports = router;
