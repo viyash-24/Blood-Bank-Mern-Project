@@ -11,4 +11,4 @@ const router = express.Router();
 //GET BLOOD DATA
 router.get("/bloodGroups-data", authMiddelware, bloodGroupDetailsContoller);
 
-
+module.exports = router;
