@@ -4,3 +4,4 @@ const {
   bloodGroupDetailsContoller,
 } = require("../controllers/analyticsController");
 
+const router = express.Router();
