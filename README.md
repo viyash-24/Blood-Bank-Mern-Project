@@ -1,3 +1,7 @@
-# This is a Blood-Bank-Mern-Project
-# Technology
-# React.js,express,mongodb,node
+# Blood-Bank-Mern-Stack-Project
+complete mern stack blood bank project 
+
+
+
+
+
