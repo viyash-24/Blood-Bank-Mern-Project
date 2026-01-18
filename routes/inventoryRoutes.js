@@ -33,4 +33,7 @@ router.post(
   getInventoryHospitalController
 );
 
+//GET DONAR RECORDS
+router.get("/get-donars", authMiddelware, getDonarsController);
+
 module.exports = router;
