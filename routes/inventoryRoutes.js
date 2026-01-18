@@ -10,3 +10,6 @@ const {
   getInventoryHospitalController,
   getRecentInventoryController,
 } = require("../controllers/inventoryController");
+
+const router = express.Router();
+
