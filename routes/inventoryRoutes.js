@@ -26,5 +26,11 @@ router.get(
   getRecentInventoryController
 );
 
+//GET HOSPITAL BLOOD RECORDS
+router.post(
+  "/get-inventory-hospital",
+  authMiddelware,
+  getInventoryHospitalController
+);
 
 module.exports = router;
