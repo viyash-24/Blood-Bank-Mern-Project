@@ -39,5 +39,8 @@ router.get("/get-donars", authMiddelware, getDonarsController);
 //GET HOSPITAL RECORDS
 router.get("/get-hospitals", authMiddelware, getHospitalController);
 
+//GET orgnaisation RECORDS
+router.get("/get-orgnaisation", authMiddelware, getOrgnaisationController);
+
 
 module.exports = router;
