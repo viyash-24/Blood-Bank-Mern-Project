@@ -36,4 +36,8 @@ router.post(
 //GET DONAR RECORDS
 router.get("/get-donars", authMiddelware, getDonarsController);
 
+//GET HOSPITAL RECORDS
+router.get("/get-hospitals", authMiddelware, getHospitalController);
+
+
 module.exports = router;
