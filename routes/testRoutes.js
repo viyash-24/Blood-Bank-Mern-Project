@@ -3,3 +3,6 @@ const { testController } = require("../controllers/testController");
 
 //router object
 const router = express.Router();
+
+//routes
+router.get("/", testController);
