@@ -46,7 +46,34 @@ const HomePage = () => {
               <i className="fa-solid fa-plus text-success py-4"></i>
               Add Inventory
             </h4>
-            
+            <table className="table ">
+              <thead>
+                <tr>
+                  <th scope="col">Blood Group</th>
+                  <th scope="col">Inventory Type</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Donar Email</th>
+                  <th scope="col">TIme & Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data?.map((record) => (
+                  <tr key={record._id}>
+                    <td>{record.bloodGroup}</td>
+                    <td>{record.inventoryType}</td>
+                    <td>{record.quantity} (ML)</td>
+                    <td>{record.email}</td>
+                    <td>
+                      {moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <Modal />
+          </div>
+        </>
+      )}
     </Layout>
   );
 };
