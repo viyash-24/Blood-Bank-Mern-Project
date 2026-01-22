@@ -24,3 +24,7 @@ const HomePage = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    getBloodRecords();
+  }, []);
