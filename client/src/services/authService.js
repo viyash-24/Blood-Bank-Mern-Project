@@ -40,3 +40,7 @@ export const handleRegister = (
         website,
       })
     );
+  } catch (error) {
+    console.log(error);
+  }
+};
