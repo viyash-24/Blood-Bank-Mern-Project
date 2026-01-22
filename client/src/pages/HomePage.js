@@ -20,3 +20,7 @@ const HomePage = () => {
         setData(data?.inventory);
         // console.log(data);
       }
+    } catch (error) {
+      console.log(error);
+    }
+  };
