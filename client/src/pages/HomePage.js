@@ -28,3 +28,11 @@ const HomePage = () => {
   useEffect(() => {
     getBloodRecords();
   }, []);
+  return (
+    <Layout>
+     
+    </Layout>
+  );
+};
+
+
