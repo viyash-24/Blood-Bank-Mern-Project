@@ -12,3 +12,31 @@ export const handleLogin = (e, email, password, role) => {
     console.log(error);
   }
 };
+
+export const handleRegister = (
+  e,
+  name,
+  role,
+  email,
+  password,
+  phone,
+  organisationName,
+  address,
+  hospitalName,
+  website
+) => {
+  e.preventDefault();
+  try {
+    store.dispatch(
+      userRegister({
+        name,
+        role,
+        email,
+        password,
+        phone,
+        organisationName,
+        address,
+        hospitalName,
+        website,
+      })
+    );
