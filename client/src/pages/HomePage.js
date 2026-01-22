@@ -11,3 +11,12 @@ const HomePage = () => {
   const { loading, error, user } = useSelector((state) => state.auth);
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+
+  //get function
+  const getBloodRecords = async () => {
+    try {
+      const { data } = await API.get("/inventory/get-inventory");
+      if (data?.success) {
+        setData(data?.inventory);
+        // console.log(data);
+      }
