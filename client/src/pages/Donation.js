@@ -24,3 +24,7 @@ const Donation = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    getDonars();
+  }, []);
