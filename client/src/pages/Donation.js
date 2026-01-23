@@ -31,7 +31,11 @@ const Donation = () => {
 
   return (
     <Layout>
+      <div className="container mt-4">
+        
+      </div>
     </Layout>
   );
 };
+
 
