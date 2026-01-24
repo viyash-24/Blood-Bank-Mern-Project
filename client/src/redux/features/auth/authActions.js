@@ -23,3 +23,20 @@ export const userLogin = createAsyncThunk(
     }
   }
 );
+
+//register
+export const userRegister = createAsyncThunk(
+  "auth/register",
+  async (
+    {
+      name,
+      role,
+      email,
+      password,
+      phone,
+      organisationName,
+      address,
+      hospitalName,
+      website,
+    },
+    { rejectWithValue }
