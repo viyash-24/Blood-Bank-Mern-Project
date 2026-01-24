@@ -60,3 +60,11 @@ export const userRegister = createAsyncThunk(
       }
     } catch (error) {
       console.log(error);
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
