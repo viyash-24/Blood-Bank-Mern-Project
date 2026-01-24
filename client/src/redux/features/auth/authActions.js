@@ -78,3 +78,13 @@ export const getCurrentUser = createAsyncThunk(
       if (res.data) {
         return res?.data;
       }
+    } catch (error) {
+      console.log(error);
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
