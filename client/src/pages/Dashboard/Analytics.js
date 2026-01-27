@@ -28,3 +28,25 @@ const Analytics = () => {
       console.log(error);
     }
   };
+
+  //lifrecycle method
+  useEffect(() => {
+    getBloodGroupData();
+  }, []);
+
+  //get function
+  const getBloodRecords = async () => {
+    try {
+      const { data } = await API.get("/inventory/get-recent-inventory");
+      if (data?.success) {
+        setInventoryData(data?.inventory);
+        console.log(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getBloodRecords();
+  }, []);
