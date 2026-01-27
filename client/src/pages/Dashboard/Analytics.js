@@ -24,3 +24,7 @@ const Analytics = () => {
         setData(data?.bloodGroupData);
         // console.log(data);
       }
+    } catch (error) {
+      console.log(error);
+    }
+  };
