@@ -25,5 +25,8 @@ const Consumer = () => {
     }
   };
 
+  useEffect(() => {
+    getDonars();
+  }, []);
 
 export default Consumer;
