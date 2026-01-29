@@ -16,4 +16,14 @@ const Consumer = () => {
           hospital: user?._id,
         },
       });
+      if (data?.success) {
+        setData(data?.inventory);
+        console.log(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
 export default Consumer;
