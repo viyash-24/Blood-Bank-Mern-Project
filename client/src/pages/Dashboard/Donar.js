@@ -21,3 +21,30 @@ const Donar = () => {
   useEffect(() => {
     getDonars();
   }, []);
+
+  return (
+    <Layout>
+      <table className="table ">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data?.map((record) => (
+            <tr key={record._id}>
+              <td>{record.name || record.organisationName + " (ORG)"}</td>
+              <td>{record.email}</td>
+              <td>{record.phone}</td>
+              <td>{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </Layout>
+  );
+};
+
