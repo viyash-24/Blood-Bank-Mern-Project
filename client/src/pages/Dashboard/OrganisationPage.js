@@ -27,3 +27,7 @@ const OrganisationPage = () => {
           setData(data?.organisations);
         }
       }
+    } catch (error) {
+      console.log(error);
+    }
+  };
