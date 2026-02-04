@@ -49,3 +49,5 @@ const Hospitals = () => {
     </Layout>
   );
 };
+
+export default Hospitals;
