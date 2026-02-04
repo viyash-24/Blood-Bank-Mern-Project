@@ -17,3 +17,7 @@ const Hospitals = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    getDonars();
+  }, []);
