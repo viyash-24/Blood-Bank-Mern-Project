@@ -21,3 +21,19 @@ const OrgList = () => {
   useEffect(() => {
     getDonars();
   }, []);
+
+  //DELETE FUNCTION
+  const handelDelete = async (id) => {
+    try {
+      let answer = window.prompt(
+        "Are You SUre Want To Delete This Organisation",
+        "Sure"
+      );
+      if (!answer) return;
+      const { data } = await API.delete(`/admin/delete-donar/${id}`);
+      alert(data?.message);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
