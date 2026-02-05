@@ -17,4 +17,9 @@ const DonarList = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    getDonars();
+  }, []);
+
 export default DonarList;
