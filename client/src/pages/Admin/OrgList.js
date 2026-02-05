@@ -37,3 +37,40 @@ const OrgList = () => {
       console.log(error);
     }
   };
+
+  return (
+    <Layout>
+      <table className="table ">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Date</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data?.map((record) => (
+            <tr key={record._id}>
+              <td>{record.organisationName}</td>
+              <td>{record.email}</td>
+              <td>{record.phone}</td>
+              <td>{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
+              <td>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handelDelete(record._id)}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </Layout>
+  );
+};
+
+export default OrgList;
