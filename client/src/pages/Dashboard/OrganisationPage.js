@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Layout from "./../../components/shared/Layout/Layout";
 import moment from "moment";
 import { useSelector } from "react-redux";
@@ -9,7 +9,7 @@ const OrganisationPage = () => {
   const { user } = useSelector((state) => state.auth);
   const [data, setData] = useState([]);
   //find org records
-  const getOrg = async () => {
+  const getOrg = useCallback(async () => {
     try {
       if (user?.role === "donar") {
         const { data } = await API.get("/inventory/get-orgnaisation");
@@ -30,11 +30,11 @@ const OrganisationPage = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [user]);
 
   useEffect(() => {
     getOrg();
-  }, [user]);
+  }, [getOrg]);
 
   return (
     <Layout>
