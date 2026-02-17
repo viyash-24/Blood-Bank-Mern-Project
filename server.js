@@ -7,6 +7,15 @@ const connectDB = require("./config/db");
 //dot config
 dotenv.config();
 
+// basic env defaults (dev-friendly)
+if (!process.env.JWT_SECRET) {
+  console.warn(
+    "JWT_SECRET is not set. Using an insecure default for development; set JWT_SECRET in .env for production."
+      .yellow
+  );
+  process.env.JWT_SECRET = "dev_jwt_secret_change_me";
+}
+
 //mongodb connection
 connectDB();
 
@@ -32,7 +41,7 @@ const PORT = process.env.PORT || 8080;
 //listen
 app.listen(PORT, () => {
   console.log(
-    `Node Server Running In ${process.env.DEV_MODE} ModeOn Port ${process.env.PORT}`
+    `Node Server Running In ${process.env.DEV_MODE || "development"} Mode On Port ${PORT}`
       .bgBlue.white
   );
 });
