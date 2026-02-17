@@ -6,24 +6,22 @@ const ProtectedRoute = ({ children }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
-  //get user current
-  const getUser = async () => {
-    try {
-      const res = await dispatch(getCurrentUser());
-      if (res.meta.requestStatus === "rejected") {
-        localStorage.clear();
-      }
-    } catch (error) {
-      localStorage.clear();
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    if (!user) {
-      getUser();
+    const token = localStorage.getItem("token");
+    if (token && !user) {
+      (async () => {
+        try {
+          const res = await dispatch(getCurrentUser());
+          if (res.meta.requestStatus === "rejected") {
+            localStorage.clear();
+          }
+        } catch (error) {
+          localStorage.clear();
+          console.log(error);
+        }
+      })();
     }
-  }, [user, dispatch]); // Include user and dispatch
+  }, [user, dispatch]);
 
   if (localStorage.getItem("token")) {
     return children;
