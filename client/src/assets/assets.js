@@ -8,6 +8,8 @@ import lock_icon from './lock_icon.svg'
 import cross_icon from './cross_icon.svg'
 import star_group from './star_group.png'
 import profile_icon from './profile_icon.png'
+import address_icon from './address_icon.svg'
+import phone_icon from './phone_icon.svg'
 
 export const assets = {
    
@@ -21,7 +23,9 @@ export const assets = {
     cross_icon,
     star_group,
    
-    profile_icon
+    profile_icon,
+    address_icon,
+    phone_icon
 }
 
 
