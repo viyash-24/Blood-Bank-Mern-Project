@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputType from "./InputType";
 import { Link } from "react-router-dom";
 import { handleLogin, handleRegister } from "../../../services/authService";
+import {assets} from "../../../assets/assets"
 
 const Form = ({ formType, submitBtn, formTitle }) => {
   const [email, setEmail] = useState("");
@@ -104,6 +105,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     inputType={"email"}
                     name={"email"}
                     value={email}
+                    img={assets.email_icon}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <InputType
@@ -112,6 +114,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     inputType={"password"}
                     name={"password"}
                     value={password}
+                    img={assets.lock_icon}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </>
@@ -127,6 +130,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                       inputType={"text"}
                       name={"name"}
                       value={name}
+                      img={assets.profile_icon}
                       onChange={(e) => setName(e.target.value)}
                     />
                   )}
@@ -157,6 +161,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     inputType={"email"}
                     name={"email"}
                     value={email}
+                    img={assets.email_icon}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <InputType
@@ -165,22 +170,17 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     inputType={"password"}
                     name={"password"}
                     value={password}
+                    img={assets.lock_icon}
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <InputType
-                    labelText={"website"}
-                    labelFor={"forWebsite"}
-                    inputType={"text"}
-                    name={"website"}
-                    value={website}
-                    onChange={(e) => setWebsite(e.target.value)}
-                  />
+                  
                   <InputType
                     labelText={"Address"}
                     labelFor={"forAddress"}
                     inputType={"text"}
                     name={"address"}
                     value={address}
+                    img={assets.address_icon}
                     onChange={(e) => setAddress(e.target.value)}
                   />
                   <InputType
@@ -189,6 +189,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     inputType={"text"}
                     name={"phone"}
                     value={phone}
+                    img={assets.phone_icon}
                     onChange={(e) => setPhone(e.target.value)}
                   />
                 </>
