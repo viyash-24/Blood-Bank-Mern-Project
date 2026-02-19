@@ -7,20 +7,32 @@ const InputType = ({
   value,
   onChange,
   name,
+  img,
 }) => {
   return (
     <>
-      <div className="mb-1">
+      <div className="mb-3">
         <label htmlFor={labelFor} className="form-label">
           {labelText}
         </label>
-        <input
-          type={inputType}
-          className="form-control"
-          name={name}
-          value={value}
-          onChange={onChange}
-        />
+        <div className="input-group">
+          {img && (
+            <span className="input-group-text">
+              <img
+                src={img}
+                alt="icon"
+                style={{ width: "20px", height: "20px" }}
+              />
+            </span>
+          )}
+          <input
+            type={inputType}
+            className="form-control"
+            name={name}
+            value={value}
+            onChange={onChange}
+          />
+        </div>
       </div>
     </>
   );
