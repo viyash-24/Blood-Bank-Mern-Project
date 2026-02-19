@@ -180,6 +180,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     inputType={"text"}
                     name={"address"}
                     value={address}
+                    img={assets.address_icon}
                     onChange={(e) => setAddress(e.target.value)}
                   />
                   <InputType
@@ -188,6 +189,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     inputType={"text"}
                     name={"phone"}
                     value={phone}
+                    img={assets.phone_icon}
                     onChange={(e) => setPhone(e.target.value)}
                   />
                 </>
