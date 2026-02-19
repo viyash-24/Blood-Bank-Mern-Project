@@ -11,28 +11,26 @@ const InputType = ({
 }) => {
   return (
     <>
-      <div className="mb-3">
-        <label htmlFor={labelFor} className="form-label">
-          {labelText}
-        </label>
-        <div className="input-group">
+      <div className="mb-1">
+        <div className="d-flex align-items-center mb-1">
           {img && (
-            <span className="input-group-text">
-              <img
-                src={img}
-                alt="icon"
-                style={{ width: "20px", height: "20px" }}
-              />
-            </span>
+            <img
+              src={img}
+              alt="icon"
+              style={{ width: "20px", height: "20px", marginRight: "8px" }}
+            />
           )}
-          <input
-            type={inputType}
-            className="form-control"
-            name={name}
-            value={value}
-            onChange={onChange}
-          />
+          <label htmlFor={labelFor} className="form-label mb-0">
+            {labelText}
+          </label>
         </div>
+        <input
+          type={inputType}
+          className="form-control"
+          name={name}
+          value={value}
+          onChange={onChange}
+        />
       </div>
     </>
   );
