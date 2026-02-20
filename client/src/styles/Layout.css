@@ -1,9 +1,35 @@
-.sidebar {
+/* .sidebar {
   height: 100vh !important;
+  background-color: #2e3200;
+  box-shadow: 0 0 2px gray;
+  color: white;
+} */
+
+.sidebar {
+  min-height: 100vh;
   /* border-radius: 5px; */
   background-color: #2e3200;
   box-shadow: 0 0 2px gray;
   color: white;
+}
+
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    min-height: auto;
+    /* border-radius: 5px; */
+    background-color: #2e3200;
+    box-shadow: 0 0 2px gray;
+    color: white;
+  }
+  .menu {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    padding-top: 10px !important;
+  }
+  .menu-item {
+    padding: 10px !important;
+  }
 }
 
 .menu {
