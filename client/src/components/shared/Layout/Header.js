@@ -15,15 +15,16 @@ const Header = () => {
 
   return (
     <>
-      <nav className="navbar">
-        <div className="container-fluid ">
-          <div className="navbar-brand h1 ">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div className="container-fluid">
+          <div className="navbar-brand h1 mb-0">
             <BiDonateBlood color="red" /> Blood Bank App
           </div>
-          <ul className="navbar-nav flex-row">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 flex-row">
             <li className="nav-item mx-3">
-              <p className="nav-link">
-                <BiUserCircle /> Welcome{" "}
+              <p className="nav-link mb-0">
+                <BiUserCircle className="me-2" />
+                Welcome{" "}
                 {user?.name || user?.hospitalName || user?.organisationName}
                 &nbsp;
                 <span className="badge bg-secondary">{user?.role}</span>
