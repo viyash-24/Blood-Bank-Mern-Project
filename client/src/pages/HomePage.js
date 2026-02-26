@@ -12,7 +12,7 @@ const HomePage = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
-  //get function
+  //get blood record function
   const getBloodRecords = async () => {
     try {
       const { data } = await API.get("/inventory/get-inventory");

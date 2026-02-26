@@ -10,7 +10,7 @@ const getDonarsListController = async (req, res) => {
     return res.status(200).send({
       success: true,
       Toatlcount: donarData.length,
-      message: "Donar List Fetched Successfully",
+      message: "Donar List Fetched Successfully...",
       donarData,
     });
   } catch (error) {

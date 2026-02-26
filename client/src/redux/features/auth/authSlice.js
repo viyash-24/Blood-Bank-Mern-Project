@@ -24,8 +24,17 @@ const authSlice = createSlice({
     });
     builder.addCase(userLogin.fulfilled, (state, { payload }) => {
       state.loading = false;
-      state.user = payload.user;
-      state.token = payload.token;
+      if (payload && payload.success && payload.user) {
+        state.user = payload.user;
+        state.token = payload.token;
+      } else {
+        // Handle cases where status is 200 but logic failed (like user not found handled with 200 OK for some reason)
+        // Or simply do nothing, or maybe set error?
+        // For now, logging and not crashing is priority.
+        if (payload && payload.message) {
+          state.error = payload.message;
+        }
+      }
     });
     builder.addCase(userLogin.rejected, (state, { payload }) => {
       state.loading = false;
@@ -38,7 +47,13 @@ const authSlice = createSlice({
     });
     builder.addCase(userRegister.fulfilled, (state, { payload }) => {
       state.loading = false;
-      state.user = payload.user;
+      if (payload && payload.success && payload.user) {
+        state.user = payload.user;
+      } else {
+        if (payload && payload.message) {
+          state.error = payload.message;
+        }
+      }
     });
     builder.addCase(userRegister.rejected, (state, { payload }) => {
       state.loading = false;
@@ -51,7 +66,9 @@ const authSlice = createSlice({
     });
     builder.addCase(getCurrentUser.fulfilled, (state, { payload }) => {
       state.loading = false;
-      state.user = payload.user;
+      if (payload && payload.user) {
+        state.user = payload.user;
+      }
     });
     builder.addCase(getCurrentUser.rejected, (state, { payload }) => {
       state.loading = false;
