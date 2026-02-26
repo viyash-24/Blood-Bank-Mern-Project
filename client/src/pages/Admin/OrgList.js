@@ -22,7 +22,7 @@ const OrgList = () => {
     getDonars();
   }, []);
 
-  //DELETE FUNCTION
+  //DELETE ORGANIZATION FUNCTION
   const handelDelete = async (id) => {
     try {
       let answer = window.prompt(
