@@ -62,6 +62,7 @@ export const userRegister = createAsyncThunk(
           window.location.replace("/login");
         }, 1000);
       }
+      return data;
     } catch (error) {
       console.log(error);
       if (error.response && error.response.data.message) {
@@ -80,7 +81,7 @@ export const getCurrentUser = createAsyncThunk(
     try {
       const res = await API.get("/auth/current-user");
       if (res.data) {
-        return res?.data;
+        return res.data;
       }
     } catch (error) {
       console.log(error);
