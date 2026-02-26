@@ -22,7 +22,7 @@ const DonarList = () => {
     getDonars();
   }, []);
 
-  //DELETE FUNCTION
+  //DELETE USER FUNCTION
   const handelDelete = async (id) => {
     try {
       let answer = window.prompt(
