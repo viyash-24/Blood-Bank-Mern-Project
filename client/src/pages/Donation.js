@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import Layout from "../components/shared/Layout/Layout";
 import API from "../services/API";
 import { useSelector } from "react-redux";
+import { FiGift, FiDroplet, FiClock } from "react-icons/fi";
 
 const Donation = () => {
   const { user } = useSelector((state) => state.auth);
@@ -34,29 +35,69 @@ const Donation = () => {
 
   return (
     <Layout>
-      <div className="container mt-4">
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">Blood Group</th>
-              <th scope="col">Inventory TYpe</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Email</th>
-              <th scope="col">Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data?.map((record) => (
-              <tr key={record._id}>
-                <td>{record.bloodGroup}</td>
-                <td>{record.inventoryType}</td>
-                <td>{record.quantity}</td>
-                <td>{record.email}</td>
-                <td>{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
+      {/* Page Header */}
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-dark-200 tracking-tight flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center">
+            <FiGift className="text-emerald-600" size={20} />
+          </div>
+          Donation History
+        </h1>
+        <p className="text-sm text-gray-500 mt-1 ml-[52px]">
+          Track all your blood donation records
+        </p>
+      </div>
+
+      {/* Table Card */}
+      <div className="bg-white rounded-2xl shadow-card border border-gray-100 overflow-hidden animate-fade-in-up">
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="border-b border-gray-100">
+                <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Blood Group</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Inventory Type</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Quantity</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Email</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-gray-50">
+              {data?.map((record) => (
+                <tr key={record._id} className="hover:bg-gray-50/80 transition-colors duration-150">
+                  <td className="px-6 py-4">
+                    <span className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-bold text-blood-600 bg-blood-50 rounded-lg">
+                      <FiDroplet size={14} />
+                      {record.bloodGroup}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-green-50 text-green-700 border border-green-200">
+                      <span className="w-1.5 h-1.5 rounded-full mr-1.5 bg-green-500" />
+                      IN
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-sm font-semibold text-dark-200">
+                    {record.quantity} <span className="text-gray-400 font-normal">ML</span>
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-600">{record.email}</td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                      <FiClock size={14} className="text-gray-400" />
+                      {moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {data?.length === 0 && (
+            <div className="flex flex-col items-center justify-center py-16 text-gray-400">
+              <FiGift size={40} className="mb-3 opacity-30" />
+              <p className="text-sm font-medium">No donation records found</p>
+            </div>
+          )}
+        </div>
       </div>
     </Layout>
   );
