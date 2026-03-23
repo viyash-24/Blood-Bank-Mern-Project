@@ -1,20 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
 const Layout = ({ children }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+
   return (
-    <>
-      <div className="header">
-        <Header />
+    <div className="flex h-screen overflow-hidden bg-gray-50">
+      {/* Sidebar */}
+      <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
+
+      {/* Main Content Area */}
+      <div className="flex flex-col flex-1 overflow-hidden">
+        {/* Header */}
+        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+
+        {/* Page Content */}
+        <main className="flex-1 overflow-y-auto p-6 lg:p-8">
+          <div className="animate-fade-in">
+            {children}
+          </div>
+        </main>
       </div>
-      <div className="row g-0">
-        <div className="col-md-3">
-          <Sidebar />
-        </div>
-        <div className="col-md-9">{children}</div>
-      </div>
-    </>
+
+      {/* Mobile Overlay */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-20 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+    </div>
   );
 };
 
