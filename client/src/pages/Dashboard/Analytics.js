@@ -36,7 +36,7 @@ const Analytics = () => {
     getBloodGroupData();
   }, []);
 
-  //get function
+  //get records function
   const getBloodRecords = async () => {
     try {
       const { data } = await API.get("/inventory/get-recent-inventory");
