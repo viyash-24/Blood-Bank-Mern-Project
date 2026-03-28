@@ -8,7 +8,7 @@ import { FiGift, FiDroplet, FiClock } from "react-icons/fi";
 const Donation = () => {
   const { user } = useSelector((state) => state.auth);
   const [data, setData] = useState([]);
-  //find donar records
+  // find donar records
   const getDonars = useCallback(async () => {
     try {
       if (!user?._id) {
