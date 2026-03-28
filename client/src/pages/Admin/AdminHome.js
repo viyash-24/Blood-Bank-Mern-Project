@@ -79,7 +79,7 @@ const AdminHome = () => {
             Hospitals and authorized organizations can easily request blood units through the platform whenever required. The system allows efficient tracking and distribution of blood based on availability, ensuring that patients receive blood without unnecessary delays. After registration, users can update their relevant details, manage requests, and monitor the status of blood availability in real time.
           </p>
           <p>
-            The Administrator has full control over the system. The admin can manage donor, organization, and hospital accounts, including adding, updating, approving, or deleting records. Additionally, the administrator oversees blood inventory management, monitors system activities, and ensures that all operations are conducted accurately and securely.
+            The Administrator has full control over the system. The admin can manage donor, organization and hospital accounts, including adding, updating, approving, or deleting records. Additionally, the administrator oversees blood inventory management, monitors system activities, and ensures that all operations are conducted accurately and securely.
           </p>
           <p>
             Overall, the Blood Bank Application provides a structured, transparent, and efficient digital solution for managing blood donations, storage, and distribution while improving coordination between donors, hospitals, and organizations.

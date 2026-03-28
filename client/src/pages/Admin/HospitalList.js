@@ -6,7 +6,7 @@ import { FiActivity, FiClock, FiTrash2 } from "react-icons/fi";
 
 const HospitalList = () => {
   const [data, setData] = useState([]);
-  //find donar records
+  //finding donar records 
   const getDonars = async () => {
     try {
       const { data } = await API.get("/admin/hospital-list");
