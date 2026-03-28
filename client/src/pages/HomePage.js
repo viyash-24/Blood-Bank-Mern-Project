@@ -15,7 +15,7 @@ const HomePage = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
 
-  //get blood record function
+  //get blood records function
   const getBloodRecords = async () => {
     try {
       const { data } = await API.get("/inventory/get-inventory");
