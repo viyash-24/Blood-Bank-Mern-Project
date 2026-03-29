@@ -1,6 +1,6 @@
 const testController = (req, res) => {
   res.status(200).send({
-    message: "Welcome user",
+    message: "Welcome User",
     success: true,
   });
 };

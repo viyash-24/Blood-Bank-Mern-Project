@@ -6,7 +6,7 @@ const userModel = require("../models/userModel");
 const createInventoryController = async (req, res) => {
   try {
     const { email } = req.body;
-    //validation
+    //Validation
     const user = await userModel.findOne({ email });
     if (!user) {
       throw new Error("User Not Found");
