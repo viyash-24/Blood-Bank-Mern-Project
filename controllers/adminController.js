@@ -1,6 +1,6 @@
 const userModel = require("../models/userModel");
 
-//GET DONAR LIST
+//GET ALL DONAR LIST
 const getDonarsListController = async (req, res) => {
   try {
     const donarData = await userModel
