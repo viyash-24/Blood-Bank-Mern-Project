@@ -28,7 +28,11 @@ router.get(
   getHospitalListController
 );
 //GET || ORG LIST
-router.get("/org-list", authMiddelware, adminMiddleware, getOrgListController);
+router.get(
+  "/org-list", 
+  authMiddelware, 
+  adminMiddleware,
+   getOrgListController);
 // ==========================
 
 // DELETE DONAR || GET
