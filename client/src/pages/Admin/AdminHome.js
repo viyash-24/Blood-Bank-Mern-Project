@@ -27,7 +27,7 @@ const AdminHome = () => {
             </div>
           </div>
           <p className="text-gray-400 mt-2 max-w-2xl">
-            Manage your Blood Bank Application from this dashboard. Monitor donors, hospitals, and organisations.
+            Manage your Blood Bank Application from this dashboard. Monitor donors, hospitals and organisations.
           </p>
         </div>
       </div>
