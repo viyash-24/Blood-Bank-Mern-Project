@@ -16,7 +16,7 @@ if (!process.env.JWT_SECRET) {
   process.env.JWT_SECRET = "dev_jwt_secret_change_me";
 }
 
-//mongodb connection
+//mongoDB connection
 connectDB();
 
 //rest object
