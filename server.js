@@ -4,10 +4,10 @@ const colors = require("colors");
 const morgan = require("morgan");
 const cors = require("cors");
 const connectDB = require("./config/db");
-//dot config
+//dot config 
 dotenv.config();
 
-// basic env defaults (dev-friendly)
+// basic env defaults 
 if (!process.env.JWT_SECRET) {
   console.warn(
     "JWT_SECRET is not set. Using an insecure default for development; set JWT_SECRET in .env for production."
