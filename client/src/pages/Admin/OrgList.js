@@ -102,7 +102,7 @@ const OrgList = () => {
 
           {data?.length === 0 && (
             <div className="flex flex-col items-center justify-center py-16 text-gray-400">
-              <FiGrid size={40} className="mb-3 opacity-30" />
+              <FiGrid size={40} className="mb-3 opacity-31" />
               <p className="text-sm font-medium">No organisations found</p>
             </div>
           )}
