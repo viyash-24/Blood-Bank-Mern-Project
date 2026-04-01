@@ -1,18 +1,17 @@
 import React from "react";
 import { BiDonateBlood, BiUserCircle } from "react-icons/bi";
-import { FiLogOut, FiMenu, FiBarChart2, FiHome } from "react-icons/fi";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { FiLogOut, FiMenu } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import NotificationPanel from "../ui/NotificationPanel";
+import { getUserDisplayName, getRoleLabel } from "../../utils/helpers";
 
 const Header = ({ sidebarOpen, setSidebarOpen }) => {
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
-  const location = useLocation();
 
-  // logout handler
   const handleLogout = () => {
     localStorage.clear();
-    alert("Logout Successfully");
     navigate("/login");
   };
 
@@ -38,26 +37,8 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
 
       {/* Right — Nav Actions */}
       <div className="flex items-center gap-3">
-        {/* Analytics / Home Toggle */}
-        {location.pathname === "/" ||
-        location.pathname === "/donar" ||
-        location.pathname === "/hospital" ? (
-          <Link
-            to="/analytics"
-            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-blood-600 bg-blood-50 hover:bg-blood-100 rounded-xl transition-all duration-200"
-          >
-            <FiBarChart2 size={16} />
-            <span className="hidden sm:inline">Analytics</span>
-          </Link>
-        ) : (
-          <Link
-            to="/"
-            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-blood-600 bg-blood-50 hover:bg-blood-100 rounded-xl transition-all duration-200"
-          >
-            <FiHome size={16} />
-            <span className="hidden sm:inline">Home</span>
-          </Link>
-        )}
+        {/* Notifications */}
+        <NotificationPanel />
 
         {/* User Info */}
         <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-gray-50 border border-gray-200/60">
@@ -66,10 +47,10 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
           </div>
           <div className="hidden sm:block">
             <p className="text-sm font-semibold text-dark-200 leading-tight">
-              {user?.name || user?.hospitalName || user?.organisationName}
+              {getUserDisplayName(user)}
             </p>
             <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-blood-600 bg-blood-50 px-2 py-0.5 rounded-full">
-              {user?.role}
+              {getRoleLabel(user?.role)}
             </span>
           </div>
         </div>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import InputType from "./InputType";
 import { Link } from "react-router-dom";
-import { handleLogin, handleRegister } from "../../../services/authService";
-import { assets } from "../../../assets/assets";
+import { handleLogin, handleRegister } from "../../services/authService";
+import { assets } from "../../assets";
 
 const roles = [
   { id: "donar", label: "Donor", icon: "❤️" },
@@ -45,16 +45,18 @@ const Form = ({ formType, submitBtn, formTitle }) => {
         className="space-y-5"
       >
         {/* Title */}
-        <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-dark-200 tracking-tight">
-            {formTitle}
-          </h1>
-          <p className="text-sm text-gray-500 mt-1">
-            {formType === "login"
-              ? "Welcome back! Sign in to continue"
-              : "Create your account to get started"}
-          </p>
-        </div>
+        {formTitle && (
+          <div className="text-center mb-6">
+            <h1 className="text-2xl font-bold text-dark-200 tracking-tight">
+              {formTitle}
+            </h1>
+            <p className="text-sm text-gray-500 mt-1">
+              {formType === "login"
+                ? "Welcome back! Sign in to continue"
+                : "Create your account to get started"}
+            </p>
+          </div>
+        )}
 
         {/* Role Selector */}
         <div className="grid grid-cols-4 gap-2">
@@ -184,7 +186,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full py-3.5 px-6 text-sm font-semibold text-white bg-gradient-to-r from-blood-600 to-blood-500 hover:from-blood-700 hover:to-blood-600 rounded-xl shadow-lg shadow-blood-600/20 hover:shadow-blood-600/30 transition-all duration-300 active:scale-[0.98]"
+          className="w-full mt-2 py-3.5 px-6 text-[15px] font-bold text-white bg-gradient-to-r from-blood-600 to-blood-500 hover:from-blood-700 hover:to-blood-600 rounded-2xl shadow-lg shadow-blood-600/25 hover:shadow-blood-600/40 transition-all duration-300 transform active:scale-[0.98]"
         >
           {submitBtn}
         </button>

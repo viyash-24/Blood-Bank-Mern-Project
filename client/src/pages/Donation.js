@@ -1,6 +1,6 @@
 import moment from "moment";
 import React, { useCallback, useEffect, useState } from "react";
-import Layout from "../components/shared/Layout/Layout";
+import Layout from "../components/Layout/Layout";
 import API from "../services/API";
 import { useSelector } from "react-redux";
 import { FiGift, FiDroplet, FiClock } from "react-icons/fi";

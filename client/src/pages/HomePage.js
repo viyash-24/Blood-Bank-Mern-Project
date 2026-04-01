@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Spinner from "../components/shared/Spinner";
-import Layout from "../components/shared/Layout/Layout";
-import Modal from "../components/shared/modal/Modal";
+import Spinner from "../components/Spinner";
+import Layout from "../components/Layout/Layout";
+import Modal from "../components/Modal/Modal";
 import API from "../services/API";
 import moment from "moment";
 import { FiPlus, FiDroplet, FiClock } from "react-icons/fi";
