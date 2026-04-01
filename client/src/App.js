@@ -1,23 +1,23 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
+import Login from "./pages/Auth/Login";
+import Register from "./pages/Auth/Register";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ProtectedRoute from "./components/Routes/ProtectedRoute";
-import PublicRoute from "./components/Routes/PublicRoute";
-import Donar from "./pages/Dashboard/Donar";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import PublicRoute from "./routes/PublicRoute";
+import Donor from "./pages/Dashboard/Donor";
 import Hospitals from "./pages/Dashboard/Hospitals";
 import OrganisationPage from "./pages/Dashboard/OrganisationPage";
 import Consumer from "./pages/Dashboard/Consumer";
 import Donation from "./pages/Donation";
 import Analytics from "./pages/Dashboard/Analytics";
-import DonarList from "./pages/Admin/DonarList";
+import DonorList from "./pages/Admin/DonorList";
 import HospitalList from "./pages/Admin/HospitalList";
 import OrgList from "./pages/Admin/OrgList";
 import AdminHome from "./pages/Admin/AdminHome";
 import { AnimatePresence } from "framer-motion";
-import AnimatedPage from "./components/shared/AnimatedPage";
+import AnimatedPage from "./components/AnimatedPage";
 
 function App() {
   const location = useLocation();
@@ -53,7 +53,7 @@ function App() {
             element={
               <ProtectedRoute>
                 <AnimatedPage>
-                  <DonarList />
+                  <DonorList />
                 </AnimatedPage>
               </ProtectedRoute>
             }
@@ -134,7 +134,7 @@ function App() {
             element={
               <ProtectedRoute>
                 <AnimatedPage>
-                  <Donar />
+                  <Donor />
                 </AnimatedPage>
               </ProtectedRoute>
             }
