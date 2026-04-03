@@ -1,12 +1,13 @@
 const userModel = require("../models/userModel");
 module.exports = async (req, res, next) => {
   try {
-    const user = await userModel.findById(req.body.userId);
+    const userId = req.userId || req.body?.userId;
+    const user = await userModel.findById(userId);
     //check admin
     if (user?.role !== "admin") {
       return res.status(401).send({
         success: false,
-        message: "AUth Fialed",
+        message: "Auth Failed",
       });
     } else {
       next();
