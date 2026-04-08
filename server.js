@@ -34,6 +34,25 @@ app.use("/api/v1/auth", require("./routes/authRoutes"));
 app.use("/api/v1/inventory", require("./routes/inventoryRoutes"));
 app.use("/api/v1/analytics", require("./routes/analyticsRoutes"));
 app.use("/api/v1/admin", require("./routes/adminRoutes"));
+app.use("/api/v1/request", require("./routes/requestRoutes"));
+
+// 404
+app.use((req, res) => {
+  return res.status(404).send({
+    success: false,
+    message: `Route not found: ${req.method} ${req.originalUrl}`,
+  });
+});
+
+// error handler
+app.use((err, req, res, next) => {
+  console.error(err);
+  const status = err.statusCode || err.status || 500;
+  return res.status(status).send({
+    success: false,
+    message: err.message || "Internal Server Error",
+  });
+});
 
 //port
 const PORT = process.env.PORT || 8080;
