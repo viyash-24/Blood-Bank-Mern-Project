@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { BiDonateBlood } from "react-icons/bi";
 import {
   FiPackage, FiHeart, FiActivity, FiUsers, FiList, FiGrid,
   FiGift, FiChevronLeft, FiBarChart2, FiFileText, FiBell,
-  FiDroplet, FiHome, FiUser, FiClipboard, FiShield,
+  FiDroplet, FiHome, FiUser, FiClipboard, FiShield, FiSend,
 } from "react-icons/fi";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const { user } = useSelector((state) => state.auth);
   const location = useLocation();
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = useCallback((path) => location.pathname === path, [location.pathname]);
 
-  const MenuItem = ({ to, icon: Icon, label, active, badge }) => (
+  const MenuItem = useCallback(({ to, icon: Icon, label, active, badge }) => (
     <Link
       to={to}
       className={`group flex items-center gap-3 px-4 py-3 mx-3 rounded-xl text-sm font-medium transition-all duration-200 ${
@@ -31,11 +31,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         <span className="px-2 py-0.5 text-[10px] font-bold bg-blood-500 text-white rounded-full">{badge}</span>
       )}
     </Link>
-  );
+  ), [isOpen]);
 
-  const SectionLabel = ({ label }) => isOpen ? (
+  const SectionLabel = useCallback(({ label }) => isOpen ? (
     <p className="px-7 mb-3 mt-6 text-[10px] font-semibold uppercase tracking-widest text-gray-600 animate-fade-in">{label}</p>
-  ) : <div className="my-3 mx-5 h-px bg-white/5" />;
+  ) : <div className="my-3 mx-5 h-px bg-white/5" />, [isOpen]);
 
   return (
     <aside className={`fixed lg:relative z-30 flex flex-col h-screen bg-dark-500 transition-all duration-300 ease-in-out ${
@@ -70,7 +70,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             <SectionLabel label="Management" />
             <MenuItem to="/admin/users" icon={FiUsers} label="User Management" active={isActive("/admin/users")} />
             <MenuItem to="/admin/inventory" icon={FiDroplet} label="Blood Inventory" active={isActive("/admin/inventory")} />
-            <MenuItem to="/admin/requests" icon={FiClipboard} label="Blood Requests" active={isActive("/admin/requests")} badge="3" />
+            <MenuItem to="/admin/requests" icon={FiClipboard} label="Incoming Requests" active={isActive("/admin/requests")} badge="3" />
+            <MenuItem to="/admin/blood-request" icon={FiSend} label="Send Request" active={isActive("/admin/blood-request")} />
           </>
         )}
 
@@ -132,4 +133,4 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   );
 };
 
-export default Sidebar;
+export default React.memo(Sidebar);
