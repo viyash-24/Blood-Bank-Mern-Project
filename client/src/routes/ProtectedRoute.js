@@ -21,7 +21,7 @@ const ProtectedRoute = ({ children }) => {
         }
       })();
     }
-  }, [user, dispatch]);
+  }, []); // Remove user from dependencies to prevent infinite loop
 
   if (localStorage.getItem("token")) {
     return children;
