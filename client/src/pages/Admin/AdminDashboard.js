@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import StatCard from "../../components/ui/StatCard";
 import BloodGroupCard from "../../components/BloodGroupCard";
 import AlertBanner from "../../components/ui/AlertBanner";
 import StatusBadge from "../../components/ui/StatusBadge";
-import { FiUsers, FiActivity, FiGrid, FiDroplet, FiClock } from "react-icons/fi";
+import { FiUsers, FiActivity, FiGrid, FiDroplet, FiClock, FiSend } from "react-icons/fi";
 import { getDonorList, getHospitalList, getOrgList } from "../../services/adminService";
 import { getBloodGroupData } from "../../services/inventoryService";
 import { formatDateTime } from "../../utils/helpers";
@@ -72,6 +73,17 @@ const AdminDashboard = () => {
           <StatCard title="Total Blood (ML)" value={loading ? "..." : totalBlood.toLocaleString()} icon={FiDroplet} color="purple" />
         </div>
 
+        {/* Quick Actions */}
+        <div className="flex flex-wrap gap-3">
+          <Link
+            to="/admin/blood-request"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blood-500 to-red-600 text-white rounded-xl font-semibold hover:from-blood-600 hover:to-red-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            <FiSend size={18} />
+            Send Blood Request
+          </Link>
+        </div>
+
         {/* Blood Inventory Grid */}
         <div>
           <h2 className="text-lg font-bold text-dark-200 mb-4">Blood Inventory</h2>
@@ -92,7 +104,7 @@ const AdminDashboard = () => {
         {/* Pending Requests */}
         {pendingRequests.length > 0 && (
           <div>
-            <h2 className="text-lg font-bold text-dark-200 mb-4">Pending Blood Requests</h2>
+            <h2 className="text-lg font-bold text-dark-200 mb-4">Incoming Blood Requests</h2>
             <div className="bg-white rounded-2xl shadow-card border border-gray-100 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
