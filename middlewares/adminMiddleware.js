@@ -3,7 +3,7 @@ module.exports = async (req, res, next) => {
   try {
     const userId = req.userId || req.body?.userId;
     const user = await userModel.findById(userId);
-    //check admin
+    //check admin authenticity
     if (user?.role !== "admin") {
       return res.status(401).send({
         success: false,
