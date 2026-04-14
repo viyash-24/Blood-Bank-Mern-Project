@@ -11,6 +11,7 @@ const roles = [
   { id: "organisation", label: "Organisation", icon: "🏢" },
 ];
 
+// hooks
 const Form = ({ formType, submitBtn, formTitle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
