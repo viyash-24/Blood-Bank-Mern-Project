@@ -71,36 +71,8 @@ const AdminDashboard = () => {
           <StatCard title="Total Hospitals" value={loading ? "..." : stats.hospitals} icon={FiActivity} color="blue" trend={5} trendLabel="this month" />
           <StatCard title="Total Organisations" value={loading ? "..." : stats.orgs} icon={FiGrid} color="emerald" trend={8} trendLabel="this month" />
           <StatCard title="Total Blood (ML)" value={loading ? "..." : totalBlood.toLocaleString()} icon={FiDroplet} color="purple" />
-        </div>
-
-        {/* Quick Actions */}
-        <div className="flex flex-wrap gap-3">
-          <Link
-            to="/admin/blood-request"
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blood-500 to-red-600 text-white rounded-xl font-semibold hover:from-blood-600 hover:to-red-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
-          >
-            <FiSend size={18} />
-            Send Blood Request
-          </Link>
-        </div>
-
-        {/* Blood Inventory Grid */}
-        <div>
-          <h2 className="text-lg font-bold text-dark-200 mb-4">Blood Inventory</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-            {bloodData.map((g) => (
-              <BloodGroupCard
-                key={g.bloodGroup}
-                bloodGroup={g.bloodGroup}
-                totalIn={g.totalIn}
-                totalOut={g.totalOut}
-                available={g.availabeBlood}
-                expiryWarning={nearExpiryItems.some((e) => e.bloodGroup === g.bloodGroup)}
-              />
-            ))}
-          </div>
-        </div>
-
+        </div>    
+       
         {/* Pending Requests */}
         {pendingRequests.length > 0 && (
           <div>

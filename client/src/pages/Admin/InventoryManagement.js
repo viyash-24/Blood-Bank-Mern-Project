@@ -232,7 +232,6 @@ const InventoryManagement = () => {
           </div>
         )}
       </div>
-
       <Modal isOpen={modalOpen} onClose={() => { setModalOpen(false); fetchData(); }} />
     </Layout>
   );

@@ -11,7 +11,7 @@ const Modal = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState("");
   const { user } = useSelector((state) => state.auth);
 
-  // handle modal data
+  // handle Modal data
   const handleModalSubmit = async () => {
     try {
       if (!bloodGroup || !quantity) {

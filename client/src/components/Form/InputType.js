@@ -42,5 +42,4 @@ const InputType = ({
     </div>
   );
 };
-
 export default InputType;
