@@ -71,11 +71,8 @@ const AdminDashboard = () => {
           <StatCard title="Total Hospitals" value={loading ? "..." : stats.hospitals} icon={FiActivity} color="blue" trend={5} trendLabel="this month" />
           <StatCard title="Total Organisations" value={loading ? "..." : stats.orgs} icon={FiGrid} color="emerald" trend={8} trendLabel="this month" />
           <StatCard title="Total Blood (ML)" value={loading ? "..." : totalBlood.toLocaleString()} icon={FiDroplet} color="purple" />
-        </div>       
-
+        </div>    
        
-       
-
         {/* Pending Requests */}
         {pendingRequests.length > 0 && (
           <div>
