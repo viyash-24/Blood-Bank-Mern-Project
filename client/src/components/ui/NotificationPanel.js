@@ -102,6 +102,7 @@ const NotificationPanel = () => {
       </div>
     </>
   );
+  
 };
 
 export default NotificationPanel;
