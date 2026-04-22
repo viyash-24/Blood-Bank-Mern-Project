@@ -1,6 +1,6 @@
 import moment from "moment";
 
-// Check if donor is eligible to donate (6-month cooldown)
+// Check if donor is eligible to donate (6- month cooldown)
 export const isDonorEligible = (lastDonationDate) => {
   if (!lastDonationDate) return { eligible: true, daysRemaining: 0 };
   const sixMonthsAgo = moment().subtract(6, 'months');
