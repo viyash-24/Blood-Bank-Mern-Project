@@ -5,8 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { AnimatePresence } from "framer-motion";
 
 // Auth
-import Login from "./pages/Auth/Login";
-import Register from "./pages/Auth/Register";
+import Login from "/pages/Auth/Login";
+import Register from "/pages/Auth/Register";
 
 // Routes
 import ProtectedRoute from "./routes/ProtectedRoute";

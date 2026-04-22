@@ -8,7 +8,7 @@ const RoleRoute = ({ children, allowedRoles }) => {
   if (!user) return <Navigate to="/login" replace />;
 
   if (!allowedRoles.includes(user.role)) {
-    // Redirect to user's own Dashboard
+    //Redirect to user's own Dashboard
     const dashboardMap = {
       admin: "/admin",
       donar: "/donor",

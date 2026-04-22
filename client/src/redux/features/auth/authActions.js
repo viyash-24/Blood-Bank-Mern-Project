@@ -27,7 +27,7 @@ export const userLogin = createAsyncThunk(
   }
 );
 
-//register
+//Register
 export const userRegister = createAsyncThunk(
   "auth/register",
   async (
