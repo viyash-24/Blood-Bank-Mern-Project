@@ -11,12 +11,14 @@ export const userLogin = createAsyncThunk(
       if (data.success) {
         toast.success(data.message);
         localStorage.setItem("token", data.token);
-        // Delayed redirect to allow toast to be seen
+        // Redirect based on role or require password change
+        const roleMap = { admin: "/admin", donar: "/donor", hospital: "/hospital", organisation: "/organisation" };
+        const dashboardPath = roleMap[data.user?.role] || "/";
         setTimeout(() => {
           if (data.user.requirePasswordChange) {
             window.location.replace("/change-password");
           } else {
-            window.location.replace("/");
+            window.location.replace(dashboardPath);
           }
         }, 1000);
       }

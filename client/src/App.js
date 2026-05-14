@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import ChangePassword from "./pages/Auth/ChangePassword";
+import Home from "./pages/Home/Home";
 
 // Routes
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -56,8 +57,8 @@ function App() {
         <Route path="/login" element={<PublicRoute><AnimatedPage><Login /></AnimatedPage></PublicRoute>} />
         <Route path="/register" element={<PublicRoute><AnimatedPage><Register /></AnimatedPage></PublicRoute>} />
 
-        {/* ===== Home Redirect ===== */}
-        <Route path="/" element={<ProtectedRoute><HomeRedirect /></ProtectedRoute>} />
+        {/* ===== Landing Page (Public) ===== */}
+        <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
         
         {/* ===== Change Password Route ===== */}
         <Route path="/change-password" element={<ProtectedRoute><AnimatedPage><ChangePassword /></AnimatedPage></ProtectedRoute>} />
