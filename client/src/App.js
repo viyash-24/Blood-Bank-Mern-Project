@@ -7,6 +7,7 @@ import { AnimatePresence } from "framer-motion";
 // Auth
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
+import ChangePassword from "./pages/Auth/ChangePassword";
 
 // Routes
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -57,6 +58,9 @@ function App() {
 
         {/* ===== Home Redirect ===== */}
         <Route path="/" element={<ProtectedRoute><HomeRedirect /></ProtectedRoute>} />
+        
+        {/* ===== Change Password Route ===== */}
+        <Route path="/change-password" element={<ProtectedRoute><AnimatedPage><ChangePassword /></AnimatedPage></ProtectedRoute>} />
 
         {/* ===== Admin Routes ===== */}
         <Route path="/admin" element={<ProtectedRoute><AnimatedPage><AdminDashboard /></AnimatedPage></ProtectedRoute>} />
@@ -67,7 +71,6 @@ function App() {
 
         {/* ===== Donor Routes ===== */}
         <Route path="/donor" element={<ProtectedRoute><AnimatedPage><DonorDashboard /></AnimatedPage></ProtectedRoute>} />
-        <Route path="/donor/availability" element={<ProtectedRoute><AnimatedPage><BloodAvailability /></AnimatedPage></ProtectedRoute>} />
         <Route path="/donor/history" element={<ProtectedRoute><AnimatedPage><DonationHistory /></AnimatedPage></ProtectedRoute>} />
 
         {/* ===== Hospital Routes ===== */}
@@ -78,7 +81,6 @@ function App() {
 
         {/* ===== Organisation Routes ===== */}
         <Route path="/organisation" element={<ProtectedRoute><AnimatedPage><OrgDashboard /></AnimatedPage></ProtectedRoute>} />
-        <Route path="/organisation/availability" element={<ProtectedRoute><AnimatedPage><BloodAvailability /></AnimatedPage></ProtectedRoute>} />
         <Route path="/organisation/inventory" element={<ProtectedRoute><AnimatedPage><InventoryManagement /></AnimatedPage></ProtectedRoute>} />
 
         {/* ===== Catch All ===== */}
