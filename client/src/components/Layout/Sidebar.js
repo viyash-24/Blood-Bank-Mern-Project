@@ -81,8 +81,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             <SectionLabel label="Dashboard" />
             <MenuItem to="/donor" icon={FiHome} label="Overview" active={isActive("/donor")} />
 
-            <SectionLabel label="Blood" />
-            <MenuItem to="/donor/availability" icon={FiDroplet} label="Blood Availability" active={isActive("/donor/availability")} />
+            <SectionLabel label="Donations" />
             <MenuItem to="/donor/history" icon={FiGift} label="Donation History" active={isActive("/donor/history")} />
           </>
         )}
@@ -106,8 +105,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             <SectionLabel label="Dashboard" />
             <MenuItem to="/organisation" icon={FiHome} label="Overview" active={isActive("/organisation")} />
 
-            <SectionLabel label="Blood" />
-            <MenuItem to="/organisation/availability" icon={FiDroplet} label="Blood Availability" active={isActive("/organisation/availability")} />
+            <SectionLabel label="Operations" />
             <MenuItem to="/organisation/inventory" icon={FiPackage} label="Inventory" active={isActive("/organisation/inventory")} />
           </>
         )}
