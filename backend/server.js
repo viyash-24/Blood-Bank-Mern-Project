@@ -4,31 +4,60 @@ const colors = require("colors");
 const morgan = require("morgan");
 const cors = require("cors");
 const connectDB = require("./config/db");
-//dot config 
+
+// Load environment variables
 dotenv.config();
 
-// basic env defaults 
-if (!process.env.JWT_SECRET) {
-  console.warn(
-    "JWT_SECRET is not set. Using an insecure default for development; set JWT_SECRET in .env for production."
-      .yellow
-  );
-  process.env.JWT_SECRET = "dev_jwt_secret_change_me";
-}
-
-//mongoDB connection
-connectDB();
-
-//rest object
+// Initialize app
 const app = express();
 
-//middlewares
-app.use(express.json());
-app.use(cors());
-app.use(morgan("dev"));
+// ===== ENVIRONMENT CHECK =====
+const NODE_ENV = process.env.NODE_ENV || "development";
 
-//routes
-// 1 test route
+// JWT Secret fallback for development only
+if (!process.env.JWT_SECRET) {
+  if (NODE_ENV === "development") {
+    console.warn(
+      "⚠ JWT_SECRET not found. Using temporary development secret.".yellow
+    );
+
+    process.env.JWT_SECRET = "dev_jwt_secret_change_me";
+  } else {
+    console.error(
+      "❌ JWT_SECRET is required in production.".red
+    );
+    process.exit(1);
+  }
+}
+
+// ===== DATABASE CONNECTION =====
+connectDB();
+
+// ===== MIDDLEWARES =====
+app.use(express.json());
+
+app.use(
+  cors({
+    origin: "*", // change to frontend URL in production
+    credentials: true,
+  })
+);
+
+// Morgan only in development
+if (NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
+
+// ===== ROUTES =====
+app.get("/", (req, res) => {
+  res.status(200).send({
+    success: true,
+    message: "API is running successfully 🚀",
+    environment: NODE_ENV,
+  });
+});
+
+// API Routes
 app.use("/api/v1/test", require("./routes/testRoutes"));
 app.use("/api/v1/auth", require("./routes/authRoutes"));
 app.use("/api/v1/inventory", require("./routes/inventoryRoutes"));
@@ -36,31 +65,38 @@ app.use("/api/v1/analytics", require("./routes/analyticsRoutes"));
 app.use("/api/v1/admin", require("./routes/adminRoutes"));
 app.use("/api/v1/request", require("./routes/requestRoutes"));
 
-// 404
+// ===== 404 HANDLER =====
 app.use((req, res) => {
-  return res.status(404).send({
+  res.status(404).send({
     success: false,
     message: `Route not found: ${req.method} ${req.originalUrl}`,
   });
 });
 
-// error handler
+// ===== GLOBAL ERROR HANDLER =====
 app.use((err, req, res, next) => {
   console.error(err);
-  const status = err.statusCode || err.status || 500;
-  return res.status(status).send({
+
+  const statusCode = err.statusCode || 500;
+
+  res.status(statusCode).send({
     success: false,
     message: err.message || "Internal Server Error",
+    ...(NODE_ENV === "development" && { stack: err.stack }),
   });
 });
 
-//port
+// ===== SERVER =====
 const PORT = process.env.PORT || 8080;
 
-//listen
-app.listen(PORT, () => {
-  console.log(
-    `Node Server Running In ${process.env.DEV_MODE || "development"} Mode On Port ${PORT}`
-      .bgBlue.white
-  );
-});
+// Vercel does not use app.listen()
+if (NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(
+      `🚀 Server running in ${NODE_ENV} mode on port ${PORT}`.bgBlue.white
+    );
+  });
+}
+
+// Export app for Vercel
+module.exports = app;
