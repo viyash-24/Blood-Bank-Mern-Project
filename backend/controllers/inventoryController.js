@@ -18,6 +18,32 @@ const createInventoryController = async (req, res) => {
     //   throw new Error("Not a hospital");
     // }
 
+    if (req.body.inventoryType === "in") {
+      if (user.role !== "donar") {
+        return res.status(400).send({
+          success: false,
+          message: "Not a donor account",
+        });
+      }
+
+      if (user.lastDonationDate) {
+        const lastDonationDate = new Date(user.lastDonationDate);
+        const currentDate = new Date();
+        const diffMonths = (currentDate.getFullYear() - lastDonationDate.getFullYear()) * 12 + (currentDate.getMonth() - lastDonationDate.getMonth());
+        
+        if (diffMonths < 4) {
+          return res.status(400).send({
+            success: false,
+            message: `Donor is not eligible. They can only donate after 4 months from their last donation.`,
+          });
+        }
+      }
+      
+      // Update lastDonationDate
+      user.lastDonationDate = new Date();
+      await user.save();
+    }
+
     if (req.body.inventoryType == "out") {
       const requestedBloodGroup = req.body.bloodGroup;
       const requestedQuantityOfBlood = req.body.quantity;

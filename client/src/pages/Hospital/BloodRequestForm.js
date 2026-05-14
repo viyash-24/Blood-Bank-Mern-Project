@@ -16,7 +16,7 @@ const BloodRequestForm = () => {
     try {
       const { data } = await API.post("/request/create", {
         bloodGroup,
-        quantity,
+        quantity: Number(quantity),
         urgency,
         notes,
       });

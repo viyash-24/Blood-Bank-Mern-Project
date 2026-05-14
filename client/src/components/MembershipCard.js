@@ -10,7 +10,7 @@ const MembershipCard = ({ user, className = "" }) => {
   const roleLabel = getRoleLabel(user.role);
 
   return (
-    <div className={`relative overflow-hidden rounded-2xl p-6 bg-gradient-to-br from-dark-500 via-dark-400 to-dark-600 text-white shadow-elevated ${className}`}>
+    <div className={`relative w-full min-w-0 overflow-hidden rounded-2xl p-6 bg-gradient-to-br from-dark-500 via-dark-400 to-dark-600 text-white shadow-elevated ${className}`}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-4 right-4 w-32 h-32 rounded-full border-2 border-white" />
@@ -62,6 +62,15 @@ const MembershipCard = ({ user, className = "" }) => {
               <p className="text-xs font-semibold">{formatDate(user.createdAt || new Date())}</p>
             </div>
           </div>
+          {user.bloodGroup && (
+            <div className="flex items-center gap-2">
+              <BiDonateBlood size={14} className="text-blood-400" />
+              <div>
+                <p className="text-[10px] text-gray-400 uppercase">Blood Group</p>
+                <p className="text-xs font-bold text-blood-400">{user.bloodGroup}</p>
+              </div>
+            </div>
+          )}
           {user.phone && (
             <div className="flex items-center gap-2">
               <FiUser size={14} className="text-gray-400" />

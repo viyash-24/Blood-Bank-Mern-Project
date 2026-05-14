@@ -5,6 +5,9 @@ const {
   getHospitalListController,
   getOrgListController,
   deleteDonarController,
+  createAdminBloodRequestController,
+  getAdminBloodRequestsController,
+  createDonorController,
 } = require("../controllers/adminController");
 
 const adminMiddleware = require("../middlewares/adminMiddleware");
@@ -42,6 +45,29 @@ router.delete(
   authMiddleware,
   adminMiddleware,
   deleteDonarController
+);
+
+// ADMIN BLOOD REQUEST (to donor / organisation)
+router.post(
+  "/create-blood-request",
+  authMiddleware,
+  adminMiddleware,
+  createAdminBloodRequestController
+);
+
+router.get(
+  "/blood-requests",
+  authMiddleware,
+  adminMiddleware,
+  getAdminBloodRequestsController
+);
+
+// CREATE DONOR || POST
+router.post(
+  "/create-donor",
+  authMiddleware,
+  adminMiddleware,
+  createDonorController
 );
 
 //EXPORT

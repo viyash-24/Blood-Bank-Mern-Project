@@ -36,35 +36,37 @@ const HospitalDashboard = () => {
 
   return (
     <Layout>
-      <div className="space-y-6 animate-fade-in">
-        <div>
-          <h1 className="text-2xl font-bold text-dark-200 tracking-tight flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-info-50 flex items-center justify-center">
-              <FiActivity className="text-info-600" size={20} />
-            </div>
-            Hospital Dashboard
-          </h1>
-          <p className="text-sm text-gray-500 mt-1 ml-[52px]">Welcome, {user?.hospitalName || 'Hospital'}</p>
-        </div>
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-6 lg:gap-8 items-start animate-fade-in">
+        <div className="min-w-0 space-y-6">
+          <div>
+            <h1 className="text-2xl font-bold text-dark-200 tracking-tight flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-info-50 flex items-center justify-center">
+                <FiActivity className="text-info-600" size={20} />
+              </div>
+              Hospital Dashboard
+            </h1>
+            <p className="text-sm text-gray-500 mt-1 ml-[52px]">Welcome, {user?.hospitalName || "Hospital"}</p>
+          </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <StatCard title="Total Requests" value={stats.total} icon={FiClipboard} color="blue" />
-          <StatCard title="Pending" value={stats.pending} icon={FiClock} color="amber" />
-          <StatCard title="Approved" value={stats.approved} icon={FiCheckCircle} color="green" />
-        </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <StatCard title="Total Requests" value={stats.total} icon={FiClipboard} color="blue" />
+            <StatCard title="Pending" value={stats.pending} icon={FiClock} color="amber" />
+            <StatCard title="Approved" value={stats.approved} icon={FiCheckCircle} color="green" />
+          </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <MembershipCard user={user} />
           <div>
             <h2 className="text-lg font-bold text-dark-200 mb-4">Blood Availability</h2>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
               {bloodData.slice(0, 4).map((g) => (
                 <BloodGroupCard key={g.bloodGroup} bloodGroup={g.bloodGroup} available={g.availabeBlood} totalIn={g.totalIn} totalOut={g.totalOut} />
               ))}
             </div>
           </div>
         </div>
+
+        <aside className="w-full min-w-0 self-start lg:w-[320px] lg:shrink-0">
+          <MembershipCard user={user} className="lg:sticky lg:top-4" />
+        </aside>
       </div>
     </Layout>
   );

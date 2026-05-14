@@ -100,4 +100,37 @@ const currentUserController = async (req, res) => {
   }
 };
 
-module.exports = { registerController, loginController, currentUserController };
+// CHANGE PASSWORD
+const changePasswordController = async (req, res) => {
+  try {
+    const { newPassword } = req.body;
+    const user = await userModel.findById(req.body.userId);
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+    user.password = hashedPassword;
+    user.requirePasswordChange = false;
+    await user.save();
+
+    return res.status(200).send({
+      success: true,
+      message: "Password changed successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error in change password API",
+      error,
+    });
+  }
+};
+
+module.exports = { registerController, loginController, currentUserController, changePasswordController };

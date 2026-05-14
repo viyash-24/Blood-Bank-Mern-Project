@@ -1,12 +1,12 @@
 import moment from "moment";
 
-// Check if donor is eligible to donate (6- month cooldown)
+// Check if donor is eligible to donate (4- month cooldown)
 export const isDonorEligible = (lastDonationDate) => {
   if (!lastDonationDate) return { eligible: true, daysRemaining: 0 };
-  const sixMonthsAgo = moment().subtract(6, 'months');
+  const fourMonthsAgo = moment().subtract(4, 'months');
   const lastDonation = moment(lastDonationDate);
-  const eligible = lastDonation.isBefore(sixMonthsAgo);
-  const nextEligible = lastDonation.add(6, 'months');
+  const eligible = lastDonation.isBefore(fourMonthsAgo);
+  const nextEligible = lastDonation.clone().add(4, 'months');
   const daysRemaining = eligible ? 0 : nextEligible.diff(moment(), 'days');
   return { eligible, daysRemaining, nextEligibleDate: nextEligible.format('DD MMM YYYY') };
 };
@@ -78,11 +78,13 @@ export const getStatusStyle = (status) => {
     'near-expiry': 'bg-warning-50 text-warning-700 border-warning-100',
     active: 'bg-success-50 text-success-700 border-success-100',
   };
+  return styles[status] || 'bg-gray-50 text-gray-700 border-gray-200';
 };
 
 // Generate Membership ID
 export const generateMembershipId = (role, id) => {
   const prefix = { admin: 'ADM', donar: 'DNR', hospital: 'HSP', organisation: 'ORG' };
-  const shortId = id ? id.slice(-6).toUpperCase() : Math.random().toString(36).slice(-6).toUpperCase();
+  const idStr = id != null ? String(id) : '';
+  const shortId = idStr ? idStr.slice(-6).toUpperCase() : Math.random().toString(36).slice(-6).toUpperCase();
   return `${prefix[role] || 'USR'}-${shortId}`;
 };
