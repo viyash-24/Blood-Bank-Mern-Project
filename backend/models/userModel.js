@@ -54,6 +54,21 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "phone numbe is required"],
     },
+    bloodGroup: {
+      type: String,
+      enum: ["O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-"],
+    },
+    requirePasswordChange: {
+      type: Boolean,
+      default: false,
+    },
+    lastDonationDate: {
+      type: Date,
+    },
+    healthConditionChecked: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
