@@ -13,7 +13,11 @@ export const userLogin = createAsyncThunk(
         localStorage.setItem("token", data.token);
         // Delayed redirect to allow toast to be seen
         setTimeout(() => {
-          window.location.replace("/");
+          if (data.user.requirePasswordChange) {
+            window.location.replace("/change-password");
+          } else {
+            window.location.replace("/");
+          }
         }, 1000);
       }
       return data;
