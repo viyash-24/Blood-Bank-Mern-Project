@@ -4,7 +4,7 @@ import DataTable from "../../components/ui/DataTable";
 import StatusBadge from "../../components/ui/StatusBadge";
 import ConfirmModal from "../../components/Modal/ConfirmModal";
 import MembershipCard from "../../components/MembershipCard";
-import { FiUsers, FiTrash2, FiCheckCircle, FiEye, FiX } from "react-icons/fi";
+import { FiUsers, FiTrash2, FiEye, FiX } from "react-icons/fi";
 import { BiDonateBlood } from "react-icons/bi";
 import API from "../../services/API";
 import { getDonorList, getHospitalList, getOrgList, deleteUser } from "../../services/adminService";
