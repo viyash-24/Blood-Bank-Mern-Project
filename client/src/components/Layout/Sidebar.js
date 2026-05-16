@@ -1,11 +1,11 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { BiDonateBlood } from "react-icons/bi";
 import {
-  FiPackage, FiHeart, FiActivity, FiUsers, FiList, FiGrid,
-  FiGift, FiChevronLeft, FiBarChart2, FiFileText, FiBell,
-  FiDroplet, FiHome, FiUser, FiClipboard, FiShield, FiSend,
+  FiPackage, FiUsers,
+  FiGift, FiChevronLeft, FiFileText,
+  FiDroplet, FiHome, FiClipboard, FiSend,
 } from "react-icons/fi";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
