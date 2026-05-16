@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import API from "../../services/API";
 import { motion } from "framer-motion";
 
@@ -10,7 +9,6 @@ const ChangePassword = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const { user } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

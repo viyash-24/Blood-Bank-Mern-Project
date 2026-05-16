@@ -394,16 +394,16 @@ const Home = () => {
             {/* Links */}
             <div className="space-y-3">
               <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Platform</h4>
-              <a href="#" className="block text-gray-500 text-sm hover:text-white transition-colors">About Us</a>
-              <a href="#" className="block text-gray-500 text-sm hover:text-white transition-colors">FAQ</a>
+              <a href="#!" className="block text-gray-500 text-sm hover:text-white transition-colors">About Us</a>
+              <a href="#!" className="block text-gray-500 text-sm hover:text-white transition-colors">FAQ</a>
               <Link to="/register" className="block text-gray-500 text-sm hover:text-white transition-colors">Register</Link>
               <Link to="/login" className="block text-gray-500 text-sm hover:text-white transition-colors">Login</Link>
             </div>
             <div className="space-y-3">
               <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Legal</h4>
-              <a href="#" className="block text-gray-500 text-sm hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="block text-gray-500 text-sm hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="block text-gray-500 text-sm hover:text-white transition-colors">Contact</a>
+              <a href="#!" className="block text-gray-500 text-sm hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#!" className="block text-gray-500 text-sm hover:text-white transition-colors">Terms of Service</a>
+              <a href="#!" className="block text-gray-500 text-sm hover:text-white transition-colors">Contact</a>
             </div>
           </div>
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">

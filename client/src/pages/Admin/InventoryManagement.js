@@ -8,7 +8,7 @@ import Modal from "../../components/Modal/Modal";
 import { FiDroplet, FiPlus, FiClock, FiAlertTriangle, FiPackage, FiTrendingUp, FiActivity } from "react-icons/fi";
 import { getBloodGroupData } from "../../services/inventoryService";
 import API from "../../services/API";
-import { formatDateTime, getExpiryStatus } from "../../utils/helpers";
+import { formatDateTime } from "../../utils/helpers";
 import moment from "moment";
 
 const InventoryManagement = () => {

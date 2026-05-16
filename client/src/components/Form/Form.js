@@ -19,7 +19,6 @@ const Form = ({ formType, submitBtn, formTitle }) => {
   const [name, setName] = useState("");
   const [organisationName, setOrganisationName] = useState("");
   const [hospitalName, setHospitalName] = useState("");
-  const [website, setWebsite] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
 
@@ -39,8 +38,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               phone,
               organisationName,
               address,
-              hospitalName,
-              website
+              hospitalName
             );
         }}
         className="space-y-5"

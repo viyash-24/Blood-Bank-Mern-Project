@@ -1,8 +1,6 @@
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { AnimatePresence } from "framer-motion";
 
 // Auth
 import Login from "./pages/Auth/Login";
@@ -13,7 +11,6 @@ import Home from "./pages/Home/Home";
 // Routes
 import ProtectedRoute from "./routes/ProtectedRoute";
 import PublicRoute from "./routes/PublicRoute";
-import RoleRoute from "./routes/RoleRoute";
 
 // Admin Pages
 import AdminDashboard from "./pages/Admin/AdminDashboard";
@@ -39,12 +36,6 @@ import BloodAvailability from "./pages/Shared/BloodAvailability";
 
 import AnimatedPage from "./components/AnimatedPage";
 
-// Home redirect based on role
-const HomeRedirect = () => {
-  const { user } = useSelector((state) => state.auth);
-  const roleMap = { admin: "/admin", donar: "/donor", hospital: "/hospital", organisation: "/organisation" };
-  return <Navigate to={roleMap[user?.role] || "/login"} replace />;
-};
 
 function App() {
   const location = useLocation();
