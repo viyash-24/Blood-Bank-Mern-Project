@@ -1,5 +1,5 @@
 import React from "react";
-import { FiDroplet, FiArrowUpRight, FiArrowDownLeft, FiAlertTriangle } from "react-icons/fi";
+import { FiArrowUpRight, FiArrowDownLeft, FiAlertTriangle } from "react-icons/fi";
 import { getBloodGroupColor } from "../utils/helpers";
 
 const BloodGroupCard = ({ bloodGroup, totalIn = 0, totalOut = 0, available = 0, expiryWarning = false, onClick }) => {
