@@ -74,6 +74,19 @@ const UserManagement = () => {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      const { data } = await deleteUser(deleteModal.user._id);
+      if (data?.success) {
+        toast.success(data.message);
+        setDeleteModal({ open: false, user: null });
+        fetchUsers();
+      }
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to delete user");
+    }
+  };
+
   const filtered = activeFilter === "all" ? users : users.filter((u) => u.role === activeFilter);
 
   const filters = [
