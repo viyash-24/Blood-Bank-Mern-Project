@@ -24,7 +24,7 @@ if (!process.env.JWT_SECRET) {
     process.env.JWT_SECRET = "dev_jwt_secret_change_me";
   } else {
     console.error(
-      "❌ JWT_SECRET is required in production.".red
+      "JWT_SECRET is required in production.".red
     );
     process.exit(1);
   }
@@ -60,7 +60,6 @@ app.get("/", (req, res) => {
 });
 
 // API Routes
-app.use("/api/v1/test", require("./routes/testRoutes"));
 app.use("/api/v1/auth", require("./routes/authRoutes"));
 app.use("/api/v1/inventory", require("./routes/inventoryRoutes"));
 app.use("/api/v1/analytics", require("./routes/analyticsRoutes"));
@@ -95,7 +94,7 @@ const PORT = process.env.PORT || 8080;
 if (NODE_ENV !== "production") {
   app.listen(PORT, () => {
     console.log(
-      `🚀 Server running in ${NODE_ENV} mode on port ${PORT}`.bgBlue.white
+      `Server running in ${NODE_ENV} mode on port ${PORT}`.bgBlue.white
     );
   });
 }
