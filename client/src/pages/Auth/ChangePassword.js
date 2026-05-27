@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import API from "../../services/API";
+import API from "../../api/axiosInstance";
 import { motion } from "framer-motion";
 
 const ChangePassword = () => {

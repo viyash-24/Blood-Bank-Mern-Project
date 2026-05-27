@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/layout/Layout";
 import DataTable from "../../components/ui/DataTable";
 import StatusBadge from "../../components/ui/StatusBadge";
 import { FiClipboard, FiDroplet, FiClock } from "react-icons/fi";
 import { formatDateTime } from "../../utils/helpers";
-import API from "../../services/API";
+import API from "../../api/axiosInstance";
 
 const RequestStatus = () => {
   const [activeFilter, setActiveFilter] = useState("all");

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/layout/Layout";
 import StatCard from "../../components/ui/StatCard";
 import AlertBanner from "../../components/ui/AlertBanner";
 import StatusBadge from "../../components/ui/StatusBadge";
 import { FiUsers, FiActivity, FiGrid, FiDroplet, FiClock } from "react-icons/fi";
-import { getDonorList, getHospitalList, getOrgList } from "../../services/adminService";
-import { getBloodGroupData } from "../../services/inventoryService";
+import { getDonorList, getHospitalList, getOrgList } from "../../api/adminService";
+import { getBloodGroupData } from "../../api/inventoryService";
 import { formatDateTime } from "../../utils/helpers";
-import API from "../../services/API";
+import API from "../../api/axiosInstance";
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({ donors: 0, hospitals: 0, orgs: 0 });

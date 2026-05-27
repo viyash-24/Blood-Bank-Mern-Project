@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/layout/Layout";
 import DataTable from "../../components/ui/DataTable";
-import API from "../../services/API";
+import API from "../../api/axiosInstance";
 import { FiDroplet, FiClock, FiGift } from "react-icons/fi";
 
 const DonationHistory = () => {

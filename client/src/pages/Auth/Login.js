@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Form from "../../components/Form/Form";
+import Form from "../../components/forms/Form";
 import { useSelector } from "react-redux";
-import Spinner from "../../components/Spinner";
+import Spinner from "../../components/common/Spinner";
 import { toast } from "react-toastify";
 import { BiDonateBlood } from "react-icons/bi";
 import { motion } from "framer-motion";
