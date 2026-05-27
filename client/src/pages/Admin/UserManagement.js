@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/layout/Layout";
 import DataTable from "../../components/ui/DataTable";
 import StatusBadge from "../../components/ui/StatusBadge";
-import ConfirmModal from "../../components/Modal/ConfirmModal";
-import MembershipCard from "../../components/MembershipCard";
+import ConfirmModal from "../../components/modals/ConfirmModal";
+import MembershipCard from "../../components/common/MembershipCard";
 import { FiUsers, FiTrash2, FiEye, FiX } from "react-icons/fi";
 import { BiDonateBlood } from "react-icons/bi";
-import API from "../../services/API";
-import { getDonorList, getHospitalList, getOrgList, deleteUser } from "../../services/adminService";
+import API from "../../api/axiosInstance";
+import { getDonorList, getHospitalList, getOrgList, deleteUser } from "../../api/adminService";
 import { getRoleLabel, formatDate, generateMembershipId } from "../../utils/helpers";
 import { toast } from "react-toastify";
 

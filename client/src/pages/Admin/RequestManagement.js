@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/layout/Layout";
 import DataTable from "../../components/ui/DataTable";
 import StatusBadge from "../../components/ui/StatusBadge";
-import ConfirmModal from "../../components/Modal/ConfirmModal";
+import ConfirmModal from "../../components/modals/ConfirmModal";
 import StatCard from "../../components/ui/StatCard";
 import { FiClipboard, FiDroplet, FiClock, FiCheckCircle, FiXCircle } from "react-icons/fi";
 import { formatDateTime } from "../../utils/helpers";
 import { toast } from "react-toastify";
-import API from "../../services/API";
+import API from "../../api/axiosInstance";
 
 const RequestManagement = () => {
   const [requests, setRequests] = useState([]);

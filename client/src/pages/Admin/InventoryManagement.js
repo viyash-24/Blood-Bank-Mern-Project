@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout/Layout";
-import BloodGroupCard from "../../components/BloodGroupCard";
+import Layout from "../../components/layout/Layout";
+import BloodGroupCard from "../../components/common/BloodGroupCard";
 import DataTable from "../../components/ui/DataTable";
 import StatusBadge from "../../components/ui/StatusBadge";
 import AlertBanner from "../../components/ui/AlertBanner";
-import Modal from "../../components/Modal/Modal";
+import Modal from "../../components/modals/Modal";
 import { FiDroplet, FiPlus, FiClock, FiAlertTriangle, FiPackage, FiTrendingUp, FiActivity } from "react-icons/fi";
-import { getBloodGroupData } from "../../services/inventoryService";
-import API from "../../services/API";
+import { getBloodGroupData } from "../../api/inventoryService";
+import API from "../../api/axiosInstance";
 import { formatDateTime } from "../../utils/helpers";
 import moment from "moment";
 
