@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Layout from "../../components/Layout/Layout";
-import MembershipCard from "../../components/MembershipCard";
+import Layout from "../../components/layout/Layout";
+import MembershipCard from "../../components/common/MembershipCard";
 import StatCard from "../../components/ui/StatCard";
 import AlertBanner from "../../components/ui/AlertBanner";
 import { FiGrid, FiUsers, FiPackage } from "react-icons/fi";
-import { getInventory } from "../../services/inventoryService";
+import { getInventory } from "../../api/inventoryService";
 
 const OrgDashboard = () => {
   const { user } = useSelector((state) => state.auth);
