@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/layout/Layout";
 import { FiFileText, FiDroplet, FiSend } from "react-icons/fi";
 import { toast } from "react-toastify";
-import API from "../../services/API";
+import API from "../../api/axiosInstance";
 
 const BloodRequestForm = () => {
   const [bloodGroup, setBloodGroup] = useState("");

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Layout from "../../components/Layout/Layout";
-import MembershipCard from "../../components/MembershipCard";
+import Layout from "../../components/layout/Layout";
+import MembershipCard from "../../components/common/MembershipCard";
 import StatCard from "../../components/ui/StatCard";
-import BloodGroupCard from "../../components/BloodGroupCard";
+import BloodGroupCard from "../../components/common/BloodGroupCard";
 import { FiActivity, FiClipboard, FiCheckCircle, FiClock } from "react-icons/fi";
-import { getBloodGroupData } from "../../services/inventoryService";
-import API from "../../services/API";
+import { getBloodGroupData } from "../../api/inventoryService";
+import API from "../../api/axiosInstance";
 
 const HospitalDashboard = () => {
   const { user } = useSelector((state) => state.auth);
