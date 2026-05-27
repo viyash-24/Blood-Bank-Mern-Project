@@ -58,8 +58,8 @@ const Form = ({ formType, submitBtn, formTitle }) => {
         )}
 
         {/* Role Selector */}
-        <div className="grid grid-cols-4 gap-2">
-          {roles.map((r) => (
+        <div className={`grid gap-2 ${formType === "login" ? "grid-cols-4" : "grid-cols-3"}`}>
+          {roles.filter(r => formType === "login" || r.id !== "admin").map((r) => (
             <button
               key={r.id}
               type="button"
@@ -86,9 +86,9 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               return (
                 <>
                   <InputType
-                    labelText={"Email"}
+                    labelText={role === "admin" ? "Username" : "Email"}
                     labelFor={"forEmail"}
-                    inputType={"email"}
+                    inputType={role === "admin" ? "text" : "email"}
                     name={"email"}
                     value={email}
                     img={assets.email_icon}
