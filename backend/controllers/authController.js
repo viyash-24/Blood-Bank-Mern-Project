@@ -4,6 +4,12 @@ const jwt = require("jsonwebtoken");
 
 const registerController = async (req, res) => {
   try {
+    if (req.body.role === 'admin') {
+      return res.status(403).send({
+        success: false,
+        message: "Admin Registration not allowed",
+      });
+    }
     const exisitingUser = await userModel.findOne({ email: req.body.email });
     //validation
     if (exisitingUser) {
@@ -33,6 +39,29 @@ const registerController = async (req, res) => {
     });
   }
 };
+
+// Default Admin Creation
+const createDefaultAdmin = async () => {
+  try {
+    const adminExists = await userModel.findOne({ role: "admin" });
+    if (!adminExists) {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash("admin123", salt);
+      const admin = new userModel({
+        name: "Admin",
+        email: "admin",
+        password: hashedPassword,
+        role: "admin",
+        phone: "0000000000",
+      });
+      await admin.save();
+      console.log("Default admin created successfully!");
+    }
+  } catch (error) {
+    console.log("Error creating default admin", error);
+  }
+};
+createDefaultAdmin();
 
 //login call back
 const loginController = async (req, res) => {
