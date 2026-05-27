@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCurrentUser } from "../redux/features/auth/authActions";
+import { getCurrentUser } from "../store/slices/authActions";
 import { Navigate } from "react-router-dom";
 
-import Spinner from "../components/Spinner";
+import Spinner from "../components/common/Spinner";
 const ProtectedRoute = ({ children }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
