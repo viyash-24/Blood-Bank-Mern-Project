@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Layout from "../../components/Layout/Layout";
-import MembershipCard from "../../components/MembershipCard";
+import Layout from "../../components/layout/Layout";
+import MembershipCard from "../../components/common/MembershipCard";
 import StatCard from "../../components/ui/StatCard";
 import AlertBanner from "../../components/ui/AlertBanner";
 import { FiHeart, FiCalendar, FiDroplet, FiClock } from "react-icons/fi";
 import { isDonorEligible } from "../../utils/helpers";
-import API from "../../services/API";
+import API from "../../api/axiosInstance";
 
 const DonorDashboard = () => {
   const { user } = useSelector((state) => state.auth);
