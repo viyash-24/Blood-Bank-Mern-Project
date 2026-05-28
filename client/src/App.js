@@ -50,7 +50,7 @@ function App() {
 
         {/* ===== Landing Page (Public) ===== */}
         <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
-        
+
         {/* ===== Change Password Route ===== */}
         <Route path="/change-password" element={<ProtectedRoute><AnimatedPage><ChangePassword /></AnimatedPage></ProtectedRoute>} />
 

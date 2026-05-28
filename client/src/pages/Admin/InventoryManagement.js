@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/layout/Layout";
+import Layout from "../../components/Layout/Layout";
 import BloodGroupCard from "../../components/common/BloodGroupCard";
 import DataTable from "../../components/ui/DataTable";
 import StatusBadge from "../../components/ui/StatusBadge";

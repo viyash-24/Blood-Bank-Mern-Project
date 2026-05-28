@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Layout from "../../components/layout/Layout";
+import Layout from "../../components/Layout/Layout";
 import MembershipCard from "../../components/common/MembershipCard";
 import StatCard from "../../components/ui/StatCard";
 import BloodGroupCard from "../../components/common/BloodGroupCard";

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/layout/Layout";
+import Layout from "../../components/Layout/Layout";
 import StatCard from "../../components/ui/StatCard";
 import AlertBanner from "../../components/ui/AlertBanner";
 import StatusBadge from "../../components/ui/StatusBadge";

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Layout from "../../components/layout/Layout";
+import Layout from "../../components/Layout/Layout";
 import { FiDroplet, FiSend, FiUsers, FiGrid } from "react-icons/fi";
 import { getDonorList, getOrgList, createBloodRequest } from "../../api/adminService";
 import { toast } from "react-toastify";
