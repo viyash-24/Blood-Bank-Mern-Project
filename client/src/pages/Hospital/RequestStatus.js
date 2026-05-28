@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../../components/layout/Layout";
+import Layout from "../../components/Layout/Layout";
 import DataTable from "../../components/ui/DataTable";
 import StatusBadge from "../../components/ui/StatusBadge";
 import { FiClipboard, FiDroplet, FiClock } from "react-icons/fi";

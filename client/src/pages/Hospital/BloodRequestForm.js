@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../../components/layout/Layout";
+import Layout from "../../components/Layout/Layout";
 import { FiFileText, FiDroplet, FiSend } from "react-icons/fi";
 import { toast } from "react-toastify";
 import API from "../../api/axiosInstance";
