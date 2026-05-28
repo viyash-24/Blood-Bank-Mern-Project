@@ -1,7 +1,7 @@
 import React from "react";
 import { BiDonateBlood } from "react-icons/bi";
 import { FiUser, FiCalendar, FiHash } from "react-icons/fi";
-import { getUserDisplayName, getRoleLabel, formatDate, generateMembershipId } from "../utils/helpers";
+import { getUserDisplayName, getRoleLabel, formatDate, generateMembershipId } from "../../utils/helpers";
 
 const MembershipCard = ({ user, className = "" }) => {
   if (!user) return null;
