@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Auth
-import Login from "pages/Auth/Login";
+import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import ChangePassword from "./pages/Auth/ChangePassword";
 import Home from "./pages/Home/Home";
