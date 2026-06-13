@@ -202,7 +202,6 @@ const Home = () => {
         <section className="relative min-h-[calc(100vh-72px)] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 silk-texture opacity-20 blur-sm scale-110" />
           <div className="absolute inset-0 bg-gradient-to-br from-[#610000] via-[#8b0000] to-[#1a0000] opacity-93" />
-          
           <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-16 items-center">
             {/* Left */}
             <motion.div
@@ -301,7 +300,6 @@ const Home = () => {
                 >
                   {/* Colored top accent bar */}
                   <div className={`absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r ${stat.gradient}`} />
-                  
                   {/* Icon ring */}
                   <div className={`stat-icon-ring w-24 h-24 rounded-full ${stat.iconBg} flex items-center justify-center mb-6 transition-transform duration-300`}>
                     <span className={`material-symbols-outlined ${stat.iconColor} text-[44px]`}>{stat.icon}</span>
