@@ -10,7 +10,7 @@ const MembershipCard = ({ user, className = "" }) => {
   const roleLabel = getRoleLabel(user.role);
 
   return (
-    <div className={`relative w-full min-w-0 overflow-hidden rounded-2xl p-6 bg-gradient-to-br from-dark-500 via-dark-400 to-dark-600 text-white shadow-elevated ${className}`}>
+    <div className={`relative w-[95%] sm:w-full mx-auto min-w-0 overflow-hidden rounded-xl p-4 bg-gradient-to-br from-dark-500 via-dark-400 to-dark-600 text-white shadow-elevated ${className}`}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-4 right-4 w-32 h-32 rounded-full border-2 border-white" />
@@ -21,10 +21,10 @@ const MembershipCard = ({ user, className = "" }) => {
       {/* Content */}
       <div className="relative z-10">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blood-500 to-blood-400 flex items-center justify-center shadow-glow">
-              <BiDonateBlood className="text-white" size={20} />
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blood-500 to-blood-400 flex items-center justify-center shadow-glow">
+              <BiDonateBlood className="text-white" size={16} />
             </div>
             <div>
               <h3 className="text-sm font-bold tracking-tight">Blood Bank</h3>
@@ -37,10 +37,10 @@ const MembershipCard = ({ user, className = "" }) => {
         </div>
 
         {/* Name */}
-        <h2 className="text-xl font-bold tracking-tight mb-4">{displayName}</h2>
+        <h2 className="text-lg font-bold tracking-tight mb-2">{displayName}</h2>
 
         {/* Details Grid */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-2">
           <div className="flex items-center gap-2">
             <FiHash size={14} className="text-gray-400" />
             <div>
@@ -84,9 +84,9 @@ const MembershipCard = ({ user, className = "" }) => {
       </div>
 
       {/* Bottom Strip */}
-      <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-        <p className="text-[10px] text-gray-500">Valid Member • Blood Bank Management System</p>
-        <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blood-500 to-blood-400 opacity-60" />
+      <div className="mt-3 pt-2 border-t border-white/10 flex items-center justify-between">
+        <p className="text-[10px] text-gray-500">Valid Member • Blood Bank</p>
+        <div className="w-5 h-5 rounded-full bg-gradient-to-br from-blood-500 to-blood-400 opacity-60" />
       </div>
     </div>
   );

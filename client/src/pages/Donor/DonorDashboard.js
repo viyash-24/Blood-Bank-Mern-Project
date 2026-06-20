@@ -26,34 +26,48 @@ const DonorDashboard = () => {
 
   return (
     <Layout>
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-6 lg:gap-8 items-start animate-fade-in">
-        <div className="min-w-0 space-y-6">
-          {/* Header */}
-          <div>
-            <h1 className="text-2xl font-bold text-dark-200 tracking-tight flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-blood-50 flex items-center justify-center">
-                <FiHeart className="text-blood-600" size={20} />
-              </div>
-              Donor Dashboard
-            </h1>
-            <p className="text-sm text-gray-500 mt-1 ml-[52px]">Welcome back, {user?.name || "Donor"}</p>
+      <div className="space-y-6 lg:space-y-8 animate-fade-in">
+        
+        {/* Top Section: Header & Alert + Card */}
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_450px] gap-6 lg:gap-8 items-stretch">
+          
+          <div className="flex flex-col justify-between min-w-0 bg-white/50 backdrop-blur-sm rounded-2xl p-5 border border-gray-100">
+            {/* Header */}
+            <div>
+              <h1 className="text-xl font-bold text-dark-200 tracking-tight flex items-center gap-3">
+                <div className="w-8 h-8 rounded-xl bg-blood-50 flex items-center justify-center">
+                  <FiHeart className="text-blood-600" size={16} />
+                </div>
+                Donor Dashboard
+              </h1>
+              <p className="text-xs text-gray-500 mt-1 ml-[44px]">Welcome back, {user?.name || "Donor"}</p>
+            </div>
+
+            {/* Eligibility Alert */}
+            <div className="mt-4">
+              {!eligibility.eligible ? (
+                <AlertBanner
+                  type="info"
+                  title={`Next eligible donation: ${eligibility.nextEligibleDate}`}
+                  message={`You need to wait ${eligibility.daysRemaining} more days before your next donation.`}
+                />
+              ) : (
+                <AlertBanner
+                  type="success"
+                  title="You are eligible to donate!"
+                  message="You can donate blood now. Visit your nearest blood bank."
+                />
+              )}
+            </div>
           </div>
 
-          {/* Eligibility Alert */}
-          {!eligibility.eligible ? (
-            <AlertBanner
-              type="info"
-              title={`Next eligible donation: ${eligibility.nextEligibleDate}`}
-              message={`You need to wait ${eligibility.daysRemaining} more days before your next donation.`}
-            />
-          ) : (
-            <AlertBanner
-              type="success"
-              title="You are eligible to donate!"
-              message="You can donate blood now. Visit your nearest blood bank."
-            />
-          )}
+          <aside className="w-full min-w-0 flex items-center">
+            <MembershipCard user={user} className="w-full m-0" />
+          </aside>
+        </div>
 
+        {/* Main Content Area */}
+        <div className="min-w-0 space-y-6">
           {/* Stats */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <StatCard title="Total Donations" value={donationHistory.length} icon={FiHeart} color="blood" />
@@ -128,10 +142,6 @@ const DonorDashboard = () => {
             </div>
           </div>
         </div>
-
-        <aside className="w-full min-w-0 self-start lg:w-[320px] lg:shrink-0">
-          <MembershipCard user={user} className="lg:sticky lg:top-4" />
-        </aside>
       </div>
     </Layout>
   );

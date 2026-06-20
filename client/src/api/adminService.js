@@ -17,3 +17,6 @@ export const createBloodRequest = (requestData) => API.post("/admin/create-blood
 
 // Get admin blood requests
 export const getAdminBloodRequests = () => API.get("/admin/blood-requests");
+
+// Get all admin dashboard stats in one call
+export const getAdminDashboardStats = () => API.get("/admin/dashboard-stats");
