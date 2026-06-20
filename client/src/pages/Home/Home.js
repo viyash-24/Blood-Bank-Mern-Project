@@ -74,7 +74,7 @@ const Home = () => {
               <span className="material-symbols-outlined text-white" style={{ fontSize: '20px' }}>bloodtype</span>
             </div>
             <span className="text-white font-bold text-xl tracking-tight" style={{ fontFamily: "'Manrope', sans-serif" }}>
-              Blood Bank Pro
+              Blood Bank
             </span>
           </Link>
 
@@ -348,7 +348,7 @@ const Home = () => {
                   Building a Bridge<br />of Hope.
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  At Blood Bank Pro, our mission is to provide a reliable, efficient, and compassionate bridge between selfless donors and those in urgent need of life-saving blood. We believe technology should empower humanity.
+                  At Blood Bank, our mission is to provide a reliable, efficient, and compassionate bridge between selfless donors and those in urgent need of life-saving blood. We believe technology should empower humanity.
                 </p>
                 <p className="text-gray-500 leading-relaxed">
                   By ensuring a steady and safe supply of blood to our partner hospitals, we are not just managing a bank — we are safeguarding the health and future of our entire community.
@@ -383,7 +383,7 @@ const Home = () => {
                 <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center">
                   <span className="material-symbols-outlined text-white" style={{ fontSize: '20px' }}>bloodtype</span>
                 </div>
-                <span className="text-white font-bold text-xl" style={{ fontFamily: "'Manrope', sans-serif" }}>Blood Bank Pro</span>
+                <span className="text-white font-bold text-xl" style={{ fontFamily: "'Manrope', sans-serif" }}>Blood Bank</span>
               </div>
               <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
                 Connecting donors with recipients to ensure no life is lost due to blood shortage.
@@ -405,7 +405,7 @@ const Home = () => {
             </div>
           </div>
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <span className="text-gray-600 text-sm">© 2026 Blood Bank Pro. All rights reserved.</span>
+            <span className="text-gray-600 text-sm">© 2026 Blood Bank. All rights reserved.</span>
             <div className="flex gap-6">
               <span className="flex items-center gap-2 text-gray-600 text-sm">
                 <span className="material-symbols-outlined text-[16px]">location_on</span>
