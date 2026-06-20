@@ -55,8 +55,8 @@ const RequestManagement = () => {
   const columns = [
     {
       header: "Hospital",
-      render: (row) => <span className="font-semibold text-dark-200">{row.hospitalName}</span>,
-      accessor: (row) => row.hospitalName,
+      render: (row) => <span className="font-semibold text-dark-200">{row.hospital?.hospitalName || row.hospital?.email || "Unknown"}</span>,
+      accessor: (row) => row.hospital?.hospitalName || row.hospital?.email || "Unknown",
     },
     {
       header: "Blood Group",
@@ -151,7 +151,7 @@ const RequestManagement = () => {
         onClose={() => setConfirmModal({ open: false, request: null, action: null })}
         onConfirm={handleAction}
         title={confirmModal.action === "approved" ? "Approve Request" : "Reject Request"}
-        message={`Are you sure you want to ${confirmModal.action === "approved" ? "approve" : "reject"} this blood request from ${confirmModal.request?.hospitalName}?`}
+        message={`Are you sure you want to ${confirmModal.action === "approved" ? "approve" : "reject"} this blood request from ${confirmModal.request?.hospital?.hospitalName || "this hospital"}?`}
         confirmText={confirmModal.action === "approved" ? "Approve" : "Reject"}
         confirmColor={confirmModal.action === "approved" ? "green" : "red"}
       />

@@ -7,6 +7,7 @@ import { FiUsers, FiActivity, FiGrid, FiDroplet, FiClock, FiCheckCircle, FiAlert
 import { BiDonateBlood } from "react-icons/bi";
 import { formatDateTime } from "../../utils/helpers";
 import API from "../../api/axiosInstance";
+import { getDonorList, getHospitalList, getOrgList } from "../../api/adminService";
 import { Link } from "react-router-dom";
 
 const SkeletonCard = () => (
@@ -27,7 +28,29 @@ const AdminDashboard = () => {
         const res = await API.get("/admin/dashboard-stats");
         if (res.data?.success) setData(res.data);
       } catch (err) {
-        console.log(err);
+        // Fallback for deployed backend where /dashboard-stats might not exist yet
+        if (err.response?.status === 404) {
+           try {
+             const [donorRes, hospRes, orgRes, reqRes] = await Promise.allSettled([
+               getDonorList(), getHospitalList(), getOrgList(), API.get("/request/get-all-requests")
+             ]);
+             
+             setData({
+               success: true,
+               stats: {
+                 donors: donorRes.status === 'fulfilled' ? donorRes.value.data?.donarData?.length || 0 : 0,
+                 hospitals: hospRes.status === 'fulfilled' ? hospRes.value.data?.hospitalData?.length || 0 : 0,
+                 orgs: orgRes.status === 'fulfilled' ? orgRes.value.data?.orgData?.length || 0 : 0,
+               },
+               bloodGroupData: [], // Blood data omitted for fallback to save DB queries
+               pendingRequests: reqRes.status === 'fulfilled' ? reqRes.value.data?.requests?.filter(r => r.status === 'pending').slice(0, 5) || [] : []
+             });
+           } catch (fallbackErr) {
+             console.log(fallbackErr);
+           }
+        } else {
+          console.log(err);
+        }
       }
       setLoading(false);
     };
