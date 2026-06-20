@@ -25,7 +25,7 @@ const OrgDashboard = () => {
 
   return (
     <Layout>
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-6 lg:gap-8 items-start animate-fade-in">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px] gap-6 lg:gap-8 items-start animate-fade-in">
         <div className="min-w-0 space-y-6">
           <div>
             <h1 className="text-2xl font-bold text-dark-200 tracking-tight flex items-center gap-3">
@@ -47,7 +47,7 @@ const OrgDashboard = () => {
           </div>
         </div>
 
-        <aside className="w-full min-w-0 self-start lg:w-[320px] lg:shrink-0">
+        <aside className="w-full min-w-0 self-start lg:w-[360px] lg:shrink-0">
           <MembershipCard user={user} className="lg:sticky lg:top-4" />
         </aside>
       </div>
