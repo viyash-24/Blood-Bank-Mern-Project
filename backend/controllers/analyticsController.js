@@ -1,59 +1,31 @@
 const inventoryModel = require("../models/inventoryModel");
 const mongoose = require("mongoose");
-//GET BLOOD DATA
+//GET BLOOD DATA — optimized: 2 aggregations instead of 16
 const bloodGroupDetailsContoller = async (req, res) => {
   try {
     const bloodGroups = ["O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-"];
-    const bloodGroupData = [];
     const organisation = new mongoose.Types.ObjectId(req.body.userId);
-    //get single blood group
-    await Promise.all(
-      bloodGroups.map(async (bloodGroup) => {
-        //Count  TOTAL BLOOD IN
-        const totalIn = await inventoryModel.aggregate([
-          {
-            $match: {
-              bloodGroup: bloodGroup,
-              inventoryType: "in",
-              organisation,
-            },
-          },
-          {
-            $group: {
-              _id: null,
-              total: { $sum: "$quantity" },
-            },
-          },
-        ]);
-        //Count TOTAL OUT
-        const totalOut = await inventoryModel.aggregate([
-          {
-            $match: {
-              bloodGroup: bloodGroup,
-              inventoryType: "out",
-              organisation,
-            },
-          },
-          {
-            $group: {
-              _id: null,
-              total: { $sum: "$quantity" },
-            },
-          },
-        ]);
-        //CALCULATE TOTAL
-        const availabeBlood =
-          (totalIn[0]?.total || 0) - (totalOut[0]?.total || 0);
 
-        //PUSH DATA
-        bloodGroupData.push({
-          bloodGroup,
-          totalIn: totalIn[0]?.total || 0,
-          totalOut: totalOut[0]?.total || 0,
-          availabeBlood,
-        });
-      })
-    );
+    // Single aggregation for all blood groups — group by inventoryType + bloodGroup
+    const [inResults, outResults] = await Promise.all([
+      inventoryModel.aggregate([
+        { $match: { organisation, inventoryType: "in" } },
+        { $group: { _id: "$bloodGroup", total: { $sum: "$quantity" } } },
+      ]),
+      inventoryModel.aggregate([
+        { $match: { organisation, inventoryType: "out" } },
+        { $group: { _id: "$bloodGroup", total: { $sum: "$quantity" } } },
+      ]),
+    ]);
+
+    const inMap = Object.fromEntries(inResults.map((r) => [r._id, r.total]));
+    const outMap = Object.fromEntries(outResults.map((r) => [r._id, r.total]));
+
+    const bloodGroupData = bloodGroups.map((bloodGroup) => {
+      const totalIn = inMap[bloodGroup] || 0;
+      const totalOut = outMap[bloodGroup] || 0;
+      return { bloodGroup, totalIn, totalOut, availabeBlood: totalIn - totalOut };
+    });
 
     return res.status(200).send({
       success: true,
