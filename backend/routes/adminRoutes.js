@@ -8,6 +8,7 @@ const {
   createAdminBloodRequestController,
   getAdminBloodRequestsController,
   createDonorController,
+  getAdminDashboardStatsController,
 } = require("../controllers/adminController");
 
 const adminMiddleware = require("../middlewares/adminMiddleware");
@@ -69,6 +70,16 @@ router.post(
   adminMiddleware,
   createDonorController
 );
+
+// DASHBOARD STATS (single call)
+router.get(
+  "/dashboard-stats",
+  authMiddleware,
+  adminMiddleware,
+  getAdminDashboardStatsController
+);
+
+router.get("/test-stats", getAdminDashboardStatsController);
 
 //EXPORT
 module.exports = router;
