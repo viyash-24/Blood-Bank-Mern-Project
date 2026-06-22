@@ -1,5 +1,8 @@
 const userModel = require("../models/userModel");
 const adminBloodRequestModel = require("../models/adminBloodRequestModel");
+const inventoryModel = require("../models/inventoryModel");
+const requestModel = require("../models/requestModel");
+const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 
@@ -155,7 +158,55 @@ const getAdminBloodRequestsController = async (req, res) => {
   }
 };
 
-// CREATE DONOR
+// GET ADMIN DASHBOARD STATS (single endpoint — replaces 5 separate API calls)
+const getAdminDashboardStatsController = async (req, res) => {
+  try {
+    const bloodGroups = ["O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-"];
+
+    const [donors, hospitals, orgs, inResults, outResults, pendingRequests] = await Promise.all([
+      userModel.countDocuments({ role: "donar" }),
+      userModel.countDocuments({ role: "hospital" }),
+      userModel.countDocuments({ role: "organisation" }),
+      inventoryModel.aggregate([
+        { $match: { inventoryType: "in" } },
+        { $group: { _id: "$bloodGroup", total: { $sum: "$quantity" } } },
+      ]),
+      inventoryModel.aggregate([
+        { $match: { inventoryType: "out" } },
+        { $group: { _id: "$bloodGroup", total: { $sum: "$quantity" } } },
+      ]),
+      requestModel
+        .find({ status: "pending" })
+        .populate("hospital", "hospitalName email")
+        .sort({ createdAt: -1 })
+        .limit(5)
+        .lean(),
+    ]);
+
+    const inMap = Object.fromEntries(inResults.map((r) => [r._id, r.total]));
+    const outMap = Object.fromEntries(outResults.map((r) => [r._id, r.total]));
+    const bloodGroupData = bloodGroups.map((bloodGroup) => {
+      const totalIn = inMap[bloodGroup] || 0;
+      const totalOut = outMap[bloodGroup] || 0;
+      return { bloodGroup, totalIn, totalOut, availabeBlood: totalIn - totalOut };
+    });
+
+    return res.status(200).send({
+      success: true,
+      stats: { donors, hospitals, orgs },
+      bloodGroupData,
+      pendingRequests,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error fetching admin dashboard stats",
+      error: error.message,
+    });
+  }
+};
+
 const createDonorController = async (req, res) => {
   try {
     const { name, email, address, phone, bloodGroup, healthConditionChecked } = req.body;
@@ -242,4 +293,5 @@ module.exports = {
   createAdminBloodRequestController,
   getAdminBloodRequestsController,
   createDonorController,
+  getAdminDashboardStatsController,
 };
